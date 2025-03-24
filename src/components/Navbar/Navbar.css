@@ -1,0 +1,20 @@
+@import url('../../index.css');
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    font-size: 16px;
+    padding: 16px 48px;
+    background-color: var(--primary);
+    color: var(--green);
+    
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}

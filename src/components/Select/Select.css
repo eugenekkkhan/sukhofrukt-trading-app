@@ -1,0 +1,79 @@
+@import url('../../index.css');
+
+.select {
+    appearance: none;
+    outline: none;
+    border: none;
+    background-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--secondary);
+    color: var(--secondary);
+    height: 4px;
+    width: 100%;
+    border-radius: 9px;
+    font-family: "Unbounded", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    padding: 12px 0px;
+    position: relative;
+}
+
+
+.option {
+    position: absolute;
+    top: 0;
+    left: 6px;
+    padding: 0px 6px;
+    width: calc(100% - 24px);
+    transition: font-weight 200ms ease-out, top 300ms ease-out, color 200ms ease-out;
+    cursor: pointer;
+}
+
+.option:hover {
+    color: var(--green);
+}
+
+.over {
+    cursor: pointer;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.under {
+    transition: height 300ms ease-out;
+    position: absolute;
+    top:0;
+    left: 0;
+    transition: background-color 300ms ease-out, height 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+.active-window {
+    box-shadow: 0 0 0 1px var(--green);
+}
+
+.arrow {
+    z-index: 100;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 4px;
+    top: 4px;
+    cursor: pointer;
+}
+
+.active-arrow {
+    transform: rotate(180deg);
+    color: var(--green);
+}
+
+.choice {
+    z-index: 100;
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    left: 12px;
+}
+
+.transparent {
+    color: transparent;
+}
