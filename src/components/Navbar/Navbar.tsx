@@ -9,15 +9,22 @@ const Navbar = () => {
   const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(()=>{
-    window.addEventListener('resize', ()=>{
-      if (window.innerWidth < 500) {
-        setWebsiteName("СTB");
-      } else if(window.innerWidth < 640){
-        setWebsiteName("СTradingBot");
-      } else {
-        setWebsiteName("Сухофрукт Trading Bot");
-      }
-    })
+    if (window.innerWidth < 500) {
+      setWebsiteName("СTB");
+    } else if(window.innerWidth < 640){
+      setWebsiteName("СTradingBot");
+    } else {
+      setWebsiteName("Сухофрукт Trading Bot");
+    }
+    // window.addEventListener('resize', ()=>{
+    //   if (window.innerWidth < 500) {
+    //     setWebsiteName("СTB");
+    //   } else if(window.innerWidth < 640){
+    //     setWebsiteName("СTradingBot");
+    //   } else {
+    //     setWebsiteName("Сухофрукт Trading Bot");
+    //   }
+    // })
     setTimeout(()=>{
       if (navRef.current)
         navRef.current.style.transition = "color 0.3s ease-out, background-color 0.3s ease-out";

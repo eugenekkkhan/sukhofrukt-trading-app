@@ -18,3 +18,12 @@
 .flex-row.table-element-gap {
     gap: 10px;
 }
+
+.pt-8 {
+    padding-top: 8px;
+    /* padding-bottom: 8px; */
+}
+
+.flex-row.gap{ 
+    gap: 8px;
+}
