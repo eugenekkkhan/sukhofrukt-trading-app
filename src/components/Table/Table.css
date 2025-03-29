@@ -1,29 +1,25 @@
-@import url('../../index.css');
+@import url("../../index.css");
 
 .table {
-    box-shadow: 0 0 0 1px var(--gray);
-    padding: 0px 10px;
-    border-radius: 18px;
+  box-shadow: 0 0 0 1px var(--gray);
+  padding: 0px 10px;
+  border-radius: 18px;
 }
 
 .table-element-bottom-border {
-    border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
 }
 
 .table-element-padding {
-    padding-bottom: 10px;
-    padding-top: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .flex-row.table-element-gap {
-    gap: 10px;
+  gap: 10px;
 }
 
 .pt-8 {
-    padding-top: 8px;
-    /* padding-bottom: 8px; */
-}
-
-.flex-row.gap{ 
-    gap: 8px;
+  padding-top: 8px;
+  /* padding-bottom: 8px; */
 }

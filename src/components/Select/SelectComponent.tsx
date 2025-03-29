@@ -1,4 +1,4 @@
-import  {
+import {
   Dispatch,
   Ref,
   RefObject,
@@ -24,7 +24,7 @@ const SelectComponent = ({
   const selectRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
   const optionsRefs: RefObject<Ref<HTMLDivElement> | undefined>[] = new Array(
-    options.length
+    options.length,
   ).fill(useRef<HTMLDivElement>(null));
   const [choice, setChoice] = [value, setValue];
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -71,11 +71,11 @@ const SelectComponent = ({
           className={isActive ? "select over active-window" : "select over"}
           onClick={() => setIsActive((prev) => !prev)}
         ></div>
-        <div ref={arrowRef} className={isActive ? "active-arrow arrow" : "arrow"}>
-          <GoArrowDown
-            size={20}
-            onClick={() => setIsActive((prev) => !prev)}
-          />
+        <div
+          ref={arrowRef}
+          className={isActive ? "active-arrow arrow" : "arrow"}
+        >
+          <GoArrowDown size={20} onClick={() => setIsActive((prev) => !prev)} />
         </div>
         <div
           className={choice === "Не выбрано" ? "choice gray" : "choice"}

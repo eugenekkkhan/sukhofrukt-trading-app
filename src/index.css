@@ -1,18 +1,37 @@
 :root {
   --primary: #fafafa;
   --secondary: #000000;
-  --gray: #CDCDCD;
-  --green-lighter: #A7FAB7;
-  --green-light: #58DB71;
-  --green: #0CA552;
-  --coral-lighter: #FFAE96;
-  --coral-light: #FF835F;
-  --coral: #DE4010;
+  --gray: #cdcdcd;
+  --gray-lighter: #eeeeee;
+  --green-lighter: #a7fab7;
+  --green-light: #58db71;
+  --green: #0ca552;
+  --coral-lighter: #ffae96;
+  --coral-light: #ff835f;
+  --coral: #de4010;
 }
 
 .dark {
   --primary: #292929;
   --secondary: #ededed;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Unbounded Regular"),
+    url("./assets/Unbounded-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 300;
+  src:
+    local("Unbounded Light"),
+    url("./assets/Unbounded-Light.ttf") format("truetype");
 }
 
 body {
@@ -27,7 +46,6 @@ body {
 p {
   margin: 0;
   font-weight: 300;
-  transition: font-weight 300ms ease-out;
 }
 
 a {
@@ -118,6 +136,10 @@ a:hover {
   background-color: var(--gray);
 }
 
+.gray-lighter-bg {
+  background-color: var(--gray-lighter);
+}
+
 .green-lighter-bg {
   background-color: var(--green-lighter);
 }
@@ -153,6 +175,10 @@ a:hover {
 
 .gray {
   color: var(--gray);
+}
+
+.gray-lighter {
+  color: var(--gray-lighter);
 }
 
 .green-lighter {
@@ -220,6 +246,10 @@ a:hover {
   border-bottom: 1px solid var(--green);
 }
 
+.basic-block {
+  padding: 48px;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -263,18 +293,25 @@ a:hover {
   animation: hover 100ms ease-out forwards;
 }
 
+.flex-row.gap {
+  gap: 8px;
+}
+
 @keyframes rotation {
-  from {
+  0% {
     transform: rotateZ(0deg);
   }
-  to {
-    transform: rotateZ(180deg);
+  80% {
+    transform: rotateZ(340deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
   }
 }
 
 @keyframes hover {
   from {
-    transform: scale(1.0);
+    transform: scale(1);
   }
   to {
     transform: scale(1.1);

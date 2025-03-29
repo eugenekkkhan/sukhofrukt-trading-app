@@ -1,0 +1,25 @@
+@keyframes rotating {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-wrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.loading {
+  position: absolute;
+  animation: rotating 300ms infinite forwards ease-out;
+}

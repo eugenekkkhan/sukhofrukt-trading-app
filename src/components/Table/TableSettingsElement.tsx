@@ -4,55 +4,49 @@ import ButtonWithIcon from "../Buttons/ButtonWithIcon";
 import { RiDeleteBinLine, RiEditLine, RiCloseLargeFill } from "react-icons/ri";
 import { MdOutlineReplay, MdSave } from "react-icons/md";
 import TextInput from "../TextInput/TextInput";
+import { validateStringToNumber } from "../../utils";
 
 const isChoiceInitial = (
-	array: [string, React.Dispatch<React.SetStateAction<string>>][]
+  array: [string, React.Dispatch<React.SetStateAction<string>>][],
 ) => {
-	for (let i = 0; i < array.length; i++) {
-		if (array[i][0] !== "0") {
-			return false;
-		}
-	}
-	return true;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i][0] !== "0") {
+      return false;
+    }
+  }
+  return true;
 };
 
-const validateStringToNumber = (str: string) => {
-	if (parseFloat(str) || str === '0') {
-		return parseFloat(str);
-	} else {
-		return false;
-	}
-}
-
 const canItBeSaved = (array: string[]) => {
-	for (let i = 0; i < array.length; i++) {
-		if (validateStringToNumber(array[i]) === false) {
-			return false;
-		}
-	}
-	return true
-}
+  for (let i = 0; i < array.length; i++) {
+    if (validateStringToNumber(array[i]) === false) {
+      return false;
+    }
+  }
+  return true;
+};
 
-const resetValues = (setArray: React.Dispatch<React.SetStateAction<string>>[]) => {
-	for (let i = 0; i < setArray.length; i++) {
-		setArray[i]('0');
-	}
-}
+const resetValues = (
+  setArray: React.Dispatch<React.SetStateAction<string>>[],
+) => {
+  for (let i = 0; i < setArray.length; i++) {
+    setArray[i]("0");
+  }
+};
 
 const returnStringWithFirstFloatingPoint = (str: string) => {
-	let newStr = '';
+  let newStr = "";
 
-	let wasPointMetInStr: boolean = false;
-	for (let i = 0; i < str.length; i++) {
-		if (str[i] !== '.')
-			newStr += str[i]
-		else if (!wasPointMetInStr) {
-			newStr += '.'
-			wasPointMetInStr = true;
-		}
-	}
-	return newStr
-}
+  let wasPointMetInStr: boolean = false;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== ".") newStr += str[i];
+    else if (!wasPointMetInStr) {
+      newStr += ".";
+      wasPointMetInStr = true;
+    }
+  }
+  return newStr;
+};
 
 type TableSettingsElementProps = {
   tradePair: string;
@@ -69,14 +63,13 @@ const TableSettingsElement = ({
   >(5);
   const [valuesOfInputs, setValuesOfInputs]: [
     string[],
-    React.Dispatch<React.SetStateAction<string>>[]
+    React.Dispatch<React.SetStateAction<string>>[],
   ] = [[], []];
   for (let i = 0; i < 5; i++) {
     choices[i] = useState<string>("0");
     valuesOfInputs[i] = choices[i][0];
     setValuesOfInputs[i] = choices[i][1];
   }
-
 
   return (
     <div
@@ -108,16 +101,22 @@ const TableSettingsElement = ({
               value={valuesOfInputs[0]}
               onChange={(event: ChangeEvent<HTMLInputElement>) => {
                 setValuesOfInputs[0](
-									returnStringWithFirstFloatingPoint(event.target.value
-									.replace(',','.')
-									.split('')
-									.filter((char)=>{
-									return '0123456789.'
-									.includes(char) ? char : null})
-									.join(''))
-								);
+                  returnStringWithFirstFloatingPoint(
+                    event.target.value
+                      .replace(",", ".")
+                      .split("")
+                      .filter((char) => {
+                        return "0123456789.".includes(char) ? char : null;
+                      })
+                      .join(""),
+                  ),
+                );
               }}
-							color={validateStringToNumber(valuesOfInputs[0]) !== false ? '' : 'coral coral-border'}
+              color={
+                validateStringToNumber(valuesOfInputs[0]) !== false
+                  ? ""
+                  : "coral coral-border"
+              }
             />
           </div>
           <div className="flex-row pt-8 gap flex-wrap">
@@ -129,21 +128,29 @@ const TableSettingsElement = ({
                   value={value}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => {
                     setValuesOfInputs[index + 1](
-											returnStringWithFirstFloatingPoint(event.target.value
-											.replace(',','.')
-											.split('')
-											.filter((char)=>{
-											return '0123456789.'
-											.includes(char) ? char : null})
-											.join(''))
-										);
+                      returnStringWithFirstFloatingPoint(
+                        event.target.value
+                          .replace(",", ".")
+                          .split("")
+                          .filter((char) => {
+                            return "0123456789.".includes(char) ? char : null;
+                          })
+                          .join(""),
+                      ),
+                    );
                   }}
-									color={validateStringToNumber(value) !== false ? '' : 'coral coral-border'}
+                  color={
+                    validateStringToNumber(value) !== false
+                      ? ""
+                      : "coral coral-border"
+                  }
                 />
               </div>
             ))}
           </div>
-          <p className="gray pt-8">Вводимое значение – дробное число от 0 до 1</p>
+          <p className="gray pt-8">
+            Вводимое значение – дробное число от 0 до 1
+          </p>
           <div
             className="flex-row justify-end table-element-gap"
             style={{ paddingTop: !isChoiceInitial(choices) ? "8px" : "0px" }}
@@ -153,7 +160,7 @@ const TableSettingsElement = ({
                 text="Сброс"
                 Icon={MdOutlineReplay}
                 className="coral-light-bg"
-								onClick={()=>resetValues(setValuesOfInputs)}
+                onClick={() => resetValues(setValuesOfInputs)}
               />
             ) : null}
             {!isChoiceInitial(choices) && canItBeSaved(valuesOfInputs) ? (

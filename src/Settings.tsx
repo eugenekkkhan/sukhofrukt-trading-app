@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { SlSettings } from "react-icons/sl";
 import SelectComponent from "./components/Select/SelectComponent";
 import ButtonWithIcon from "./components/Buttons/ButtonWithIcon";
@@ -44,7 +44,7 @@ const Settings = () => {
       <div className="flex-column basic-block bottom-border">
         <div className="flex-row justify-between">
           <h3>МОНЕТЫ</h3>
-					<AddCoin/>
+          <AddCoin />
         </div>
         <TableSettingsComponent />
       </div>

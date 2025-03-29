@@ -1,4 +1,4 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import ButtonWithIcon from "./Buttons/ButtonWithIcon";
 import ThemeContext from "../context/ThemeContext/ThemeContext";
 import { BiMoon, BiSun } from "react-icons/bi";
@@ -10,11 +10,9 @@ const ThemeSwitcher = () => {
       <ButtonWithIcon
         Icon={context.theme === "light" ? BiMoon : BiSun}
         text={""}
-        onClick={
-          () => {
-            context.setTheme(context.theme === "light" ? "dark" : "light");
-          }
-        }
+        onClick={() => {
+          context.setTheme(context.theme === "light" ? "dark" : "light");
+        }}
       />
     </>
   );

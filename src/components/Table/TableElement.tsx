@@ -40,7 +40,7 @@ const TableElement = ({
             {percentage.toFixed(2).replace("-", "–")} %)
           </p>
         </div>
-				<ButtonWithIcon className="coral-light-bg" text="Закрыть"/>
+        <ButtonWithIcon className="coral-light-bg" text="Закрыть" />
       </div>
     </div>
   );
