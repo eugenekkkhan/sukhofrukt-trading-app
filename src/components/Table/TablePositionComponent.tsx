@@ -45,6 +45,7 @@ const TablePositionsComponent = () => {
       {/* {fetchedData.map((value)=>(<div>{Object.values(value).join('...')} {Object.keys(value).join('...')}</div>))} */}
       {isFetched ? fetchedData.map((value, index) => (
         <TablePositionElement
+          key={index}
           tradePair={value.symbol}
           currentAmountInDollars={value.usdtEquity}
           unrealizedPL={value.unrealizedPL}

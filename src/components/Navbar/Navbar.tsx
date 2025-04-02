@@ -29,7 +29,6 @@ const Navbar = () => {
       if (navRef.current)
         navRef.current.style.transition =
           "color 0.3s ease-out, background-color 0.3s ease-out, padding 300ms ease-out;";
-      console.log('penis');
     }, 300);
   });
 

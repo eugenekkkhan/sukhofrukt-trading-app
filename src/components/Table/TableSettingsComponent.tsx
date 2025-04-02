@@ -40,6 +40,7 @@ const TableSettingsComponent = () => {
     <div className="table">
       {objKeys.map((value, index) => (
         <TableSettingsElement
+          key={index}
           tradePair={value}
           isLast={index === objKeys.length - 1}
         />

@@ -11,7 +11,6 @@ const changeOptions = async (
 		workingSide: WorkingSideType, 
 		timeFrame: TimeFrameType
 	) => {
-	console.log(id, workingSide, timeFrame);
 	return await axios.post(import.meta.env.VITE_BASE_URL + apiUrl +"private/changeOptions", 
 		{
 			id: id,

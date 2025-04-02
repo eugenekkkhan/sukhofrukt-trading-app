@@ -21,9 +21,7 @@ const RouteComponent = () => {
       verifyID(id).then((res: AxiosResponse<boolean>) => {
         setIsVerified(res.data);
         setIsFetched(true);
-        console.log(res);
       }).catch((err: AxiosError)=>{
-        console.log(err);
         setIsError(err.code ?? false);
       });
     }
