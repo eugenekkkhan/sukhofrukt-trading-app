@@ -15,6 +15,8 @@
   font-size: 14px;
   padding: 12px 0px;
   position: relative;
+  z-index: 90;
+  transition: z-index 300ms ease-out;
 }
 
 .option {
@@ -27,6 +29,7 @@
     top 300ms ease-out,
     color 200ms ease-out;
   cursor: pointer;
+  z-index: 90;
 }
 
 .option:hover {
@@ -70,7 +73,7 @@
 }
 
 .choice {
-  z-index: 100;
+  z-index: 120;
   position: absolute;
   cursor: pointer;
   top: 5px;
@@ -79,4 +82,8 @@
 
 .transparent {
   color: transparent;
+}
+
+.select.active {
+  z-index: 150;
 }

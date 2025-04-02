@@ -1,23 +1,34 @@
 import "./Table.css";
 import ButtonWithIcon from "../Buttons/ButtonWithIcon";
 
-type TableElementProps = {
+type TablePositionElementProps = {
+  // entryPrice: number;
+  // currentPrice: number;
+  // amountInDollars: number;
   tradePair: string;
-  entryPrice: number;
-  currentPrice: number;
-  amountInDollars: number;
+  unrealizedPL: number;
+  currentAmountInDollars: number;
+  amountOfCoins: number;
+  whenOpened?: number;
+  percentage?: number;
   isLast?: boolean;
 };
 
-const TableElement = ({
+// tradePair={value.symbol}
+// entryPrice={value.usdtEquity}
+// currentPrice={value.unrealizedPL}
+// amountInDollars={value.amount}
+
+const TablePositionElement = ({
   tradePair,
-  entryPrice,
-  currentPrice,
-  amountInDollars,
+  currentAmountInDollars,
+  unrealizedPL,
+  amountOfCoins,
+  whenOpened,
+  percentage = (unrealizedPL / (currentAmountInDollars-unrealizedPL)) * 100,
   isLast = false,
-}: TableElementProps) => {
-  const percentage: number = ((currentPrice - entryPrice) / entryPrice) * 100;
-  const profitOrLossInDollars: number = (percentage * amountInDollars) / 100;
+}: TablePositionElementProps) => {
+  const timeOpened = whenOpened ? new Date(whenOpened) : null;
   return (
     <div
       className={
@@ -29,14 +40,14 @@ const TableElement = ({
       <p>{tradePair}</p>
       <div className="flex-row table-element-gap">
         <div className="text-right text-small">
-          <p>{amountInDollars} $</p>
+          <p>{currentAmountInDollars.toFixed(2)} $ {timeOpened?.toLocaleDateString()}</p>
           <p
             className={
               percentage > 0 ? "green-light" : percentage < 0 ? "coral" : ""
             }
           >
             {percentage > 0 ? "+" : ""}
-            {profitOrLossInDollars.toFixed(2).replace("-", "–")} $ (
+            {unrealizedPL.toFixed(2).replace("-", "–")} $ (
             {percentage.toFixed(2).replace("-", "–")} %)
           </p>
         </div>
@@ -46,4 +57,4 @@ const TableElement = ({
   );
 };
 
-export default TableElement;
+export default TablePositionElement;

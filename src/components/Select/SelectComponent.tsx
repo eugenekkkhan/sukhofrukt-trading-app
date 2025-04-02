@@ -12,8 +12,8 @@ import { GoArrowDown } from "react-icons/go";
 
 type Props = {
   options: string[];
-  value: string | undefined;
-  setValue: Dispatch<SetStateAction<string | undefined>>;
+  value: string | undefined | null;
+  setValue: Dispatch<SetStateAction<string | undefined | null>>;
 };
 
 const SelectComponent = ({
@@ -42,7 +42,7 @@ const SelectComponent = ({
 
   return (
     <>
-      <div className="select">
+      <div className={isActive ? "select active": "select"}>
         <div
           className="select under"
           style={{ height: isActive ? `${options.length * 22 + 18}px` : "4px" }}

@@ -61,18 +61,62 @@ h1 {
   margin: 0;
   font-size: 48px;
   font-weight: 300;
+  transition: font-size 300ms ease-out;
 }
 
 h2 {
   margin: 0;
   font-size: 36px;
   font-weight: 300;
+  transition: font-size 300ms ease-out;
 }
 
 h3 {
   margin: 0;
   font-size: 24px;
   font-weight: 400;
+  transition: font-size 300ms ease-out;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  transition: width 300ms ease-out, height 300ms ease-out;
+}
+
+.basic-block {
+  padding: 48px;
+  transition: padding 300ms ease-out;
+}
+
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 24px;
+  height: 100vh;
+}
+
+@media screen and (max-width: 720px) {
+  h1 {
+    font-size: 2em;
+
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.25em;
+  }
+  .icon {
+    height: 2em;
+    width: 2em;
+  }
+
+  .basic-block {
+    padding: 24px 12px;
+
+  }
 }
 
 a:hover {
@@ -244,10 +288,6 @@ a:hover {
 
 .bottom-border {
   border-bottom: 1px solid var(--green);
-}
-
-.basic-block {
-  padding: 48px;
 }
 
 .flex-row {

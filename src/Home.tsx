@@ -1,6 +1,6 @@
 import "./layout.css";
 import PanelWithInfo from "./components/PanelWithInfo/PanelWithInfo";
-import TableComponent from "./components/Table/TableComponent";
+import TableComponent from "./components/Table/TablePositionComponent";
 import { RxDashboard } from "react-icons/rx";
 // import socket from "./socket";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ function Home() {
   const [message, setMessage] = useState<socketMessageType | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://альпийские-тетерева.рф/ws?uid=844639124690");
+    const ws = new WebSocket("wss://альпийские-тетерева.рф/ws?uid=844639124690");
 
     ws.onmessage = (event: MessageEvent) => {
       setMessage(JSON.parse(event.data));
@@ -28,9 +28,9 @@ function Home() {
   return (
     <>
       <div className="flex-column basic-block bottom-border">
-        <div className="flex-row">
-          <div className="rotate" style={{ height: "48px", width: "48px" }}>
-            <RxDashboard size={48} />
+        <div className="flex-row gap">
+          <div className="rotate icon">
+            <RxDashboard size='100%'/>
           </div>
           <h1>Dashboard</h1>
         </div>

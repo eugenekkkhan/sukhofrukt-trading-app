@@ -15,11 +15,13 @@
   width: 24px;
   height: 24px;
   border-radius: 100%;
-  box-shadow: inset 0 0 0 1px var(--secondary);
+  color: var(--primary);
+  background-color: var(--green-light);
   transition:
     transform 300ms ease-out,
     background-color 300ms ease-out,
-    box-shadow 300ms ease-out;
+    box-shadow 300ms ease-out,
+    color 300ms ease-out;
   transform: rotate(45deg);
 }
 
@@ -27,8 +29,22 @@
   position: absolute;
 }
 
+.add-coin:hover {
+  box-shadow: inset 0 0 0 1px var(--green-light);
+  color: var(--green-light);
+  background-color: var(--primary);
+}
+
 .adding-coin {
   transform: rotate(0deg);
+  background-color: var(--coral-light);
+  /* box-shadow: inset 0 0 0 1px var(--coral-light); */
+}
+
+.adding-coin:hover {
+  box-shadow: inset 0 0 0 1px var(--coral-light);
+  color: var(--coral-light);
+  background-color: var(--primary);
 }
 
 @keyframes appearing {
@@ -38,7 +54,7 @@
   }
   to {
     background-color: var(--primary);
-    box-shadow: inset 0 0 0 1px var(--secondary);
+    box-shadow: inset 0 0 0 1px var(--gray);
   }
 }
 
@@ -48,8 +64,6 @@
   width: 325px;
   height: 105px;
   border-radius: 18px;
-  background-color: var(--primary);
-  box-shadow: inset 0 0 0 1px var(--secondary);
   transition:
     color 300ms ease-out,
     background-color 300ms ease-out,
