@@ -2,23 +2,15 @@ import { useEffect, useState } from 'react';
 import { getCookie } from '../../../utils';
 import '../Table.css'
 import { fetchHistory } from '../../../getQueries';
+import TableHistoryElement, { HistoryDataType } from './TableHistoryElement';
 
-type HistoryDataType = {
-  amount: number,
-  cost: number,
-  fix: number,
-  positionCreateTime: number,
-  side: string,
-  symbol: string,
-  userId: number
-}
 
 const TableHistoryComponent = () => {
   const hardCodeData: HistoryDataType[] = [
     {
-      amount: 100,
+      amount: -103,
       cost: 230,
-      fix: 1100,
+      fix: 10,
       positionCreateTime: 0,
       side: 'SHORT',
       symbol: 'BTCUSDT',
@@ -50,11 +42,22 @@ const TableHistoryComponent = () => {
   })
   return (
     <div>
-      <p className='bold'>ИСТОРИЯ ПОЗИЦИЙ</p>
       <div className='table'>
-
+        {hardCodeData.map((value, index) => (
+          <TableHistoryElement
+            key={index}
+            amount={value.amount}
+            cost={value.cost}
+            fix={value.fix}
+            positionCreateTime={value.positionCreateTime}
+            side={value.side}
+            symbol={value.symbol}
+            userId={value.userId}
+            isLast={index === hardCodeData.length - 1} 
+          />
+          )
+        )}
       </div>
-      {fetchedData.toString()}
     </div>
   )
 }

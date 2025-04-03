@@ -14,6 +14,7 @@ const History = () => {
         </div>
       </div>
 			<div className="flex-column basic-block bottom-border">
+				<h3 className='bold'>ИСТОРИЯ ПОЗИЦИЙ</h3>
 				<TableHistoryComponent />
 			</div>
     </>

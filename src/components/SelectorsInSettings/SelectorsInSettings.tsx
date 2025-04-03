@@ -78,7 +78,7 @@ const SelectorsInSettings = () => {
           <h1>Настройки</h1>
         </div>
         <p>Сторона, в которую работает бот:</p>
-        <div className="flex-row" style={{ height: "30px" }}>
+        <div className="flex-row flex-wrap">
           <div style={{ width: "360px", zIndex: '20' }}>
             <SelectComponent
               options={workingSideOpts}
@@ -110,7 +110,7 @@ const SelectorsInSettings = () => {
           ) : null}
         </div>
 				<p>Timeframe:</p>
-        <div className="flex-row" style={{ height: "30px" }}>
+        <div className="flex-row flex-wrap">
           <div style={{ width: "360px", zIndex: '10' }}>
             <SelectComponent
               options={timeframeOpts}

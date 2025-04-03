@@ -14,7 +14,7 @@ type Position = {
   cTimestamp: number;
 };
 
-const TablePositionsComponent = () => {
+const TablePositionComponent = () => {
   const data = {
     BTCUSDT: { entryPrice: 85000, currentPrice: 90000, amountInDollars: 1012 },
     ETHUSDT: { entryPrice: 3000, currentPrice: 3500, amountInDollars: 492 },
@@ -61,4 +61,4 @@ const TablePositionsComponent = () => {
   );
 };
 
-export default TablePositionsComponent;
+export default TablePositionComponent;

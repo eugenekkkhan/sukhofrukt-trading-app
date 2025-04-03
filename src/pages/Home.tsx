@@ -1,8 +1,8 @@
 import "../layout.css";
 import PanelWithInfo from "../components/PanelWithInfo/PanelWithInfo";
-import TableComponent from "../components/Table/TablePosition/TablePositionComponent";
 import { RxDashboard } from "react-icons/rx";
 import { useEffect, useState } from "react";
+import TablePositionComponent from "../components/Table/TablePosition/TablePositionComponent";
 
 type socketMessageType = {
   accountEquity: number;
@@ -61,7 +61,7 @@ function Home() {
       </div>
       <div className="flex-column basic-block bottom-border">
         <h3>АКТИВНЫЕ ПОЗИЦИИ</h3>
-        <TableComponent />
+        <TablePositionComponent />
       </div>
     </>
   );
