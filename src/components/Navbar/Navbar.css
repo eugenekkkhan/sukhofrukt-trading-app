@@ -17,11 +17,41 @@
   gap: 10px;
 }
 
+.nav-links-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-links-icons {
+  display: none;
+}
+
 @media only screen and (max-width: 720px) {
   .nav {
     padding: 16px 12px;
     transition: all 300ms ease-out;
-  };
+  }
+
+  .nav-links-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .nav-links-icons > a {
+    text-decoration: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+  
+  .nav-links-text {
+    display: none;
+  }
 };
 
 @media only screen and (min-width: 721px) {
