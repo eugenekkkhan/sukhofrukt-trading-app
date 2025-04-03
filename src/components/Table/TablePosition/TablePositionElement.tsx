@@ -1,5 +1,5 @@
-import "./Table.css";
-import ButtonWithIcon from "../Buttons/ButtonWithIcon";
+import "../Table.css";
+import ButtonWithIcon from "../../Buttons/ButtonWithIcon";
 
 type TablePositionElementProps = {
   // entryPrice: number;

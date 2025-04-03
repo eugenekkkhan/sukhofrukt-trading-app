@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import TablePositionElement from "./TablePositionElement";
-import { fetchPositions } from "../../getQueries";
-import { getCookie } from "../../utils";
-import Loading from "../Loading/Loading";
+import { fetchPositions } from "../../../getQueries";
+import { getCookie } from "../../../utils";
+import Loading from "../../Loading/Loading";
 
 type Position = {
   amount: number;

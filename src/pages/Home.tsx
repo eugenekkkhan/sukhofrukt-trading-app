@@ -1,10 +1,8 @@
-import "./layout.css";
-import PanelWithInfo from "./components/PanelWithInfo/PanelWithInfo";
-import TableComponent from "./components/Table/TablePositionComponent";
+import "../layout.css";
+import PanelWithInfo from "../components/PanelWithInfo/PanelWithInfo";
+import TableComponent from "../components/Table/TablePosition/TablePositionComponent";
 import { RxDashboard } from "react-icons/rx";
-// import socket from "./socket";
 import { useEffect, useState } from "react";
-import { headers } from "next/headers";
 
 type socketMessageType = {
   accountEquity: number;

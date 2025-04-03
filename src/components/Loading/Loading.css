@@ -1,3 +1,5 @@
+@import url("../../index.css");
+
 @keyframes rotating {
   0% {
     transform: rotateZ(0deg);
@@ -21,5 +23,6 @@
 
 .loading {
   position: absolute;
+  color: var(--gray);
   animation: rotating 300ms infinite forwards ease-out;
 }

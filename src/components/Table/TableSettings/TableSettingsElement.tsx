@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from "react";
-import "./Table.css";
-import ButtonWithIcon from "../Buttons/ButtonWithIcon";
+import "../Table.css";
+import ButtonWithIcon from "../../Buttons/ButtonWithIcon";
 import { RiDeleteBinLine, RiEditLine, RiCloseLargeFill } from "react-icons/ri";
 import { MdOutlineReplay, MdSave } from "react-icons/md";
-import TextInput from "../TextInput/TextInput";
-import { validateStringToNumber } from "../../utils";
+import TextInput from "../../TextInput/TextInput";
+import { validateStringToNumber } from "../../../utils";
 
 const isChoiceInitial = (
   array: [string, React.Dispatch<React.SetStateAction<string>>][],

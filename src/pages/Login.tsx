@@ -1,13 +1,11 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import TextInput from "./components/TextInput/TextInput";
-import "./index.css";
-import ButtonWithIcon from "./components/Buttons/ButtonWithIcon";
-import { setCookie, validateStringToNumber } from "./utils";
-import axios from "axios";
-import { verifyID } from "./getQueries";
+import { ChangeEvent, useEffect, useState } from "react";
+import TextInput from "../components/TextInput/TextInput";
+import "../index.css";
+import ButtonWithIcon from "../components/Buttons/ButtonWithIcon";
+import { setCookie, validateStringToNumber } from "../utils";
+import { verifyID } from "../getQueries";
 import { MdAccessTime, MdCheck, MdLogin } from "react-icons/md";
-import ThemeSwitcher from "./components/ThemeSwitcher";
-import Loading from "./components/Loading/Loading";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 const setLogged = (value: string) => {
   setCookie("id", value);

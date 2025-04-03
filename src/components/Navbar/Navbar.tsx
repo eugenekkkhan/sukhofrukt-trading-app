@@ -9,7 +9,7 @@ import { MdHistory } from "react-icons/md";
 import { GoHistory } from "react-icons/go";
 
 const Navbar = () => {
-  const [websiteName, setWebsiteName] = useState("Сухофрукт Trading Bot");
+  const [websiteName, setWebsiteName] = useState<string | null>(null);
   const location = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
 
@@ -40,13 +40,13 @@ const Navbar = () => {
         {/* Text */}
         <div className="nav-links-text">
           <a
-            href="/"
+            href={location.pathname === "/" ? undefined : "/"}
             className={location.pathname === "/" ? "medium green" : "green"}
           >
             Dashboard
           </a>
           <a
-            href="/settings"
+            href={location.pathname === "/settings" ? undefined : "/settings"}
             className={
               location.pathname === "/settings" ? "medium green" : "green"
             }
@@ -54,7 +54,7 @@ const Navbar = () => {
             Настройки
           </a>
           <a
-            href="/history"
+            href={location.pathname === "/history" ? undefined : "/history"}
             className={
               location.pathname === "/history" ? "medium green" : "green"
             }

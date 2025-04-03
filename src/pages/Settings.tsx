@@ -1,7 +1,6 @@
-import TableSettingsComponent from "./components/Table/TableSettingsComponent";
-import AddCoin from "./components/AddCoin/AddCoin";
-import { WorkingSideType } from "./postQueries";
-import SelectorsInSettings from "./components/SelectorsInSettings/SelectorsInSettings";
+import TableSettingsComponent from "../components/Table/TableSettings/TableSettingsComponent";
+import AddCoin from "../components/AddCoin/AddCoin";
+import SelectorsInSettings from "../components/SelectorsInSettings/SelectorsInSettings";
 
 const Settings = () => {
 

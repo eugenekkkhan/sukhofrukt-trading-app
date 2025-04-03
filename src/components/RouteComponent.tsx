@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router";
-import Login from "../Login";
-import Home from "../Home";
-import Settings from "../Settings";
+import Login from "../pages/Login";
+import Home from "../pages/Home";
+import Settings from "../pages/Settings";
 import { getCookie } from "../utils";
 import Navbar from "./Navbar/Navbar";
 import { verifyID } from "../getQueries";
 import Loading from "./Loading/Loading";
 import { AxiosError, AxiosResponse } from "axios";
 import ErrorComponent from "./Error/ErrorComponent";
+import History from "../pages/History";
 
 const RouteComponent = () => {
   const id = getCookie("id");
@@ -39,7 +40,8 @@ const RouteComponent = () => {
         ) : (
           <>
             <Route path="/" element={<Home />} />
-            <Route path="settings" element={<Settings />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/history" element={<History />} />
           </>
         )}
       </Routes>
