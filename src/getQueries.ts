@@ -11,6 +11,12 @@ const verifyID = async (id: string) => {
   });
 };
 
+const fetchHistory = async (id: string) => {
+  return await axios.get(import.meta.env.VITE_BASE_URL + apiUrl +"private/fetchHistory", {
+    params: { id: id },
+  });
+};
+
 const fetchPositions = async (id: string) => {
   return await axios.get(import.meta.env.VITE_BASE_URL + apiUrl +"private/fetchPositions", {
     params: { id: id },
@@ -31,4 +37,4 @@ const getAllCoinValues = async (id: string) => {
   );
 };
 
-export { verifyID, fetchPositions, fetchUserOptions, getAllCoinValues };
+export { verifyID, fetchHistory, fetchPositions, fetchUserOptions, getAllCoinValues };

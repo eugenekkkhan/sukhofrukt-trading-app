@@ -290,6 +290,19 @@ a:hover {
   border-bottom: 1px solid var(--green);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-grabbing {
+  cursor: grabbing;
+}
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+.cursor-default {
+  cursor: default;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;

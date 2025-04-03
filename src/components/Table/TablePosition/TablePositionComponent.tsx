@@ -39,7 +39,6 @@ const TablePositionsComponent = () => {
   });
 
   const objKeys = Object.keys(data);
-  const objValues = Object.values(data);
   return (
     <div className="table">
       {/* {fetchedData.map((value)=>(<div>{Object.values(value).join('...')} {Object.keys(value).join('...')}</div>))} */}
