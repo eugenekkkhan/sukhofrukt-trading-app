@@ -1,54 +1,71 @@
-# React + TypeScript + Vite
+# Сухофрукт Trading Bot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Сухофрукт Trading Bot — это веб-приложение для управления торговыми позициями, анализа истории сделок и настройки параметров торговли.
 
-Currently, two official plugins are available:
+## Основные страницы
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. **Dashboard (Главная страница)**
+- Отображает текущий баланс, нереализованную прибыль/убыток и изменения за день.
+- Использует WebSocket для получения данных в реальном времени.
+- Компоненты:
+  - `PanelWithInfo` — отображает информацию о прибыли/убытке.
+  - `TableComponent` — таблица активных позиций.
 
-## Expanding the ESLint configuration
+### 2. **Settings (Настройки)**
+- Позволяет добавлять монеты и настраивать параметры торговли.
+- Компоненты:
+  - `SelectorsInSettings` — селекторы для настройки параметров.
+  - `AddCoin` — кнопка для добавления монет.
+  - `TableSettingsComponent` — таблица настроек монет.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. **Login (Авторизация)**
+- Позволяет пользователю войти в систему, введя свой ID.
+- Использует:
+  - `TextInput` — поле ввода ID.
+  - `ButtonWithIcon` — кнопка для входа.
+  - `ThemeSwitcher` — переключатель темы.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+### 4. **History (История)**
+- Отображает историю сделок.
+- Компоненты:
+  - `TableHistoryComponent` — таблица истории сделок.
+
+## Установка и запуск
+
+### 1. Установка зависимостей
+Убедитесь, что у вас установлен Node.js. Затем выполните:
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+### 2. Запуск в режиме разработки
+Для запуска приложения в режиме разработки:
+```bash
+npm run dev
 ```
+
+### 3. Сборка приложения
+Для сборки приложения:
+```bash
+npm run build
+```
+
+### 4. Предпросмотр собранного приложения
+Для предпросмотра собранного приложения:
+```bash
+npm run preview
+```
+
+## Зависимости
+
+### Основные зависимости
+- `react`, `react-dom` — для создания пользовательского интерфейса.
+- `react-icons` — для отображения иконок.
+
+### DevDependencies
+- `vite` — для сборки и разработки.
+- `eslint`, `prettier` — для линтинга и форматирования кода.
+- `typescript` — для статической типизации.
+
+## Лицензия
+Этот проект является частным и не предназначен для публичного использования.
