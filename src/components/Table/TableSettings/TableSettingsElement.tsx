@@ -4,72 +4,30 @@ import ButtonWithIcon from "../../Buttons/ButtonWithIcon";
 import { RiDeleteBinLine, RiEditLine, RiCloseLargeFill } from "react-icons/ri";
 import { MdOutlineReplay, MdSave } from "react-icons/md";
 import TextInput from "../../TextInput/TextInput";
-import { validateStringToNumber } from "../../../utils";
-
-const isChoiceInitial = (
-  array: [string, React.Dispatch<React.SetStateAction<string>>][],
-) => {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i][0] !== "0") {
-      return false;
-    }
-  }
-  return true;
-};
-
-const canItBeSaved = (array: string[]) => {
-  for (let i = 0; i < array.length; i++) {
-    if (validateStringToNumber(array[i]) === false) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const resetValues = (
-  setArray: React.Dispatch<React.SetStateAction<string>>[],
-) => {
-  for (let i = 0; i < setArray.length; i++) {
-    setArray[i]("0");
-  }
-};
-
-const returnStringWithFirstFloatingPoint = (str: string) => {
-  let newStr = "";
-
-  let wasPointMetInStr: boolean = false;
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] !== ".") newStr += str[i];
-    else if (!wasPointMetInStr) {
-      newStr += ".";
-      wasPointMetInStr = true;
-    }
-  }
-  return newStr;
-};
-
-type TableSettingsElementProps = {
-  tradePair: string;
-  isLast: boolean;
-};
+import { getCookie, validateStringToNumber } from "../../../utils";
+import { canItBeSaved, initStrings, isChoiceInitial, resetValues, returnStringWithFirstFloatingPoint, saveCoinValue, TableSettingsElementProps } from "./TSEFuncs";
 
 const TableSettingsElement = ({
   tradePair,
+  initValues,
   isLast,
+  uid,
+  amount
 }: TableSettingsElementProps) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const choices = new Array<
-    [string, React.Dispatch<React.SetStateAction<string>>]
-  >(5);
+  const choices = new Array<[string, React.Dispatch<React.SetStateAction<string>>]>(5);
   const [valuesOfInputs, setValuesOfInputs]: [
     string[],
     React.Dispatch<React.SetStateAction<string>>[],
   ] = [[], []];
+
   for (let i = 0; i < 5; i++) {
-    choices[i] = useState<string>("0");
+    choices[i] = useState<string>(initValues[i].toString());
     valuesOfInputs[i] = choices[i][0];
     setValuesOfInputs[i] = choices[i][1];
   }
+
+  const id = getCookie('id');
 
   return (
     <div
@@ -99,6 +57,7 @@ const TableSettingsElement = ({
             <TextInput
               style={{ width: "180px" }}
               value={valuesOfInputs[0]}
+              id={''}
               onChange={(event: ChangeEvent<HTMLInputElement>) => {
                 setValuesOfInputs[0](
                   returnStringWithFirstFloatingPoint(
@@ -121,11 +80,12 @@ const TableSettingsElement = ({
           </div>
           <div className="flex-row pt-8 gap flex-wrap">
             {valuesOfInputs.slice(1).map((value, index) => (
-              <div className="flex-row">
+              <div className="flex-row" key={index}>
                 <p>Фикс. {(index + 1) * 25}%</p>
                 <TextInput
-                  style={{ width: "40px" }}
+                  style={{ width: "45px" }}
                   value={value}
+                  id={''}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => {
                     setValuesOfInputs[index + 1](
                       returnStringWithFirstFloatingPoint(
@@ -133,14 +93,14 @@ const TableSettingsElement = ({
                           .replace(",", ".")
                           .split("")
                           .filter((char) => {
-                            return "0123456789.".includes(char) ? char : null;
+                            return "0123456789.".includes(char) ? true : false;
                           })
                           .join(""),
                       ),
                     );
                   }}
                   color={
-                    validateStringToNumber(value) !== false
+                    (validateStringToNumber(value) !== false && parseFloat(value) <= 1)
                       ? ""
                       : "coral coral-border"
                   }
@@ -153,18 +113,28 @@ const TableSettingsElement = ({
           </p>
           <div
             className="flex-row justify-end table-element-gap"
-            style={{ paddingTop: !isChoiceInitial(choices) ? "8px" : "0px" }}
+            style={{ paddingTop: !isChoiceInitial(choices, initValues) ? "8px" : "0px" }}
           >
-            {!isChoiceInitial(choices) ? (
+            {!isChoiceInitial(choices, initValues) ? (
               <ButtonWithIcon
                 text="Сброс"
                 Icon={MdOutlineReplay}
                 className="coral-light-bg"
-                onClick={() => resetValues(setValuesOfInputs)}
+                onClick={() => resetValues(setValuesOfInputs, initValues)}
               />
             ) : null}
-            {!isChoiceInitial(choices) && canItBeSaved(valuesOfInputs) ? (
-              <ButtonWithIcon text="Сохранить" Icon={MdSave} />
+            {!isChoiceInitial(choices, initValues) && canItBeSaved(valuesOfInputs) ? (
+              <ButtonWithIcon 
+                text="Сохранить" 
+                Icon={MdSave} 
+                onClick={()=>saveCoinValue(
+                  valuesOfInputs as initStrings, 
+                  amount, 
+                  tradePair, 
+                  uid,
+                  id ?? undefined
+                )}
+              />
             ) : null}
           </div>
         </div>

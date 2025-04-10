@@ -1,4 +1,8 @@
+import { useState, useEffect } from "react";
+import { fetchPositions, getAllCoinValues } from "../../../getQueries";
+import { getCookie } from "../../../utils";
 import TableSettingsElement from "./TableSettingsElement";
+import Loading from "../../Loading/Loading";
 
 const TableSettingsComponent = () => {
   const data = {
@@ -36,17 +40,40 @@ const TableSettingsComponent = () => {
   const objKeys = Object.keys(data);
   const objValues = Object.values(data);
 
+  const [fetchedData, setFetchedData] = useState<any[]>([]);
+  const [isFetched, setIsFetched] = useState<boolean>(false);
+
+  useEffect(() => {
+    const id = getCookie("id");
+    if (id && !isFetched) {
+      getAllCoinValues(id)
+        .then((res) => {
+          setFetchedData(res.data);
+          console.log(res.data)
+          setIsFetched(true);
+        })
+    }
+  });
+
+
   return (
     <div className="table">
-      {objKeys.map((value, index) => (
+      {isFetched ? fetchedData.map((value, index) => (
         <TableSettingsElement
-          key={index}
-          tradePair={value}
-          isLast={index === objKeys.length - 1}
+          key={value.id}
+          tradePair={value.Symbol}
+          initValues={[value.Equity, value.fixOn25, value.fixOn50, value.fixOn75, value.fixOn100]}
+          uid={value.Uid}
+          amount={value.Amount}
+          isLast={index === fetchedData.length - 1}
         />
-      ))}
+      )) : 
+      <div className="table-element-padding">
+        <Loading width="100%" height="100%" />
+      </div>
+      }
     </div>
-  );
+  )
 };
 
 export default TableSettingsComponent;

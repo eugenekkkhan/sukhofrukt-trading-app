@@ -1,5 +1,7 @@
 import "../Table.css";
 import ButtonWithIcon from "../../Buttons/ButtonWithIcon";
+import { closePosition } from "../../../postQueries";
+import { getCookie } from "../../../utils";
 
 type TablePositionElementProps = {
   // entryPrice: number;
@@ -23,12 +25,18 @@ const TablePositionElement = ({
   tradePair,
   currentAmountInDollars,
   unrealizedPL,
-  amountOfCoins,
   whenOpened,
   percentage = (unrealizedPL / (currentAmountInDollars-unrealizedPL)) * 100,
   isLast = false,
 }: TablePositionElementProps) => {
   const timeOpened = whenOpened ? new Date(whenOpened) : null;
+  const id = getCookie("id");
+
+  const closePositionFunction = () => {
+    if (id && parseInt(id))
+      closePosition(parseInt(id), tradePair)
+  }
+
   return (
     <div
       className={
@@ -51,7 +59,11 @@ const TablePositionElement = ({
             {percentage.toFixed(2).replace("-", "–")} %)
           </p>
         </div>
-        <ButtonWithIcon className="coral-light-bg" text="Закрыть" />
+        <ButtonWithIcon 
+          className="coral-light-bg" 
+          text="Закрыть"
+          onClick={closePositionFunction} 
+        />
       </div>
     </div>
   );

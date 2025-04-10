@@ -57,6 +57,12 @@ const TablePositionComponent = () => {
         <Loading width="100%" height="100%"/>
       </div>
       }
+      {isFetched && fetchedData.length === 0 ?
+          <div style={{display: 'flex', justifyContent: 'center', padding: '16px'}}>
+            Нет открытых позиций
+          </div> :
+          null
+        }
     </div>
   );
 };

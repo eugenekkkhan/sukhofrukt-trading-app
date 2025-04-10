@@ -9,12 +9,6 @@
   }
 }
 
-.screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .loading-wrapper {
   position: relative;
   width: 48px;

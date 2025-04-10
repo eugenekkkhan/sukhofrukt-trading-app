@@ -34,7 +34,6 @@ const TableHistoryComponent = () => {
     if (id && !isFetched) {
       fetchHistory(id)
         .then((res) => {
-          console.log(res.data)
           setFetchedData(res.data);
           setIsFetched(true);
         })
@@ -43,7 +42,7 @@ const TableHistoryComponent = () => {
   return (
     <div>
       <div className='table'>
-        {hardCodeData.map((value, index) => (
+        {fetchedData.map((value, index) => (
           <TableHistoryElement
             key={index}
             amount={value.amount}
@@ -53,10 +52,14 @@ const TableHistoryComponent = () => {
             side={value.side}
             symbol={value.symbol}
             userId={value.userId}
-            isLast={index === hardCodeData.length - 1} 
+            isLast={index === fetchedData.length - 1} 
           />
           )
         )}
+        {fetchedData.length === 0 ?
+          "Нет ничего" :
+          null
+        }
       </div>
     </div>
   )

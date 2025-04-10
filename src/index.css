@@ -303,6 +303,10 @@ a:hover {
   cursor: default;
 }
 
+.p-8px {
+  padding: 8px;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;

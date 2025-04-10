@@ -10,7 +10,7 @@ const changeOptions = async (
 		id: number, 
 		workingSide: WorkingSideType, 
 		timeFrame: TimeFrameType
-	) => {
+) => {
 	return await axios.post(import.meta.env.VITE_BASE_URL + apiUrl +"private/changeOptions", 
 		{
 			id: id,
@@ -26,5 +26,56 @@ const changeOptions = async (
 	);
 };
   
+const closePosition = async (
+		id: number,
+		symbol: string
+) => {
+	return await axios.post(import.meta.env.VITE_BASE_URL + apiUrl +"private/closePosition", 
+		{
+			id: id,
+			symbol: symbol
+		},
+
+		{
+			params: {
+				id: id,
+			},
+		}
+	);
+}
+
+const updateCoinValue = async (
+		amount: number,
+		fixOn25: number,
+		fixOn50: number,
+		fixOn75: number,
+		fixOn100: number,
+		equity: number, 
+		id: number,
+		symbol: string,
+		uid: number
+) => {
+	return await axios.post(import.meta.env.VITE_BASE_URL + apiUrl +"private/closePosition", 
+		{
+			amount: amount,
+			equity: equity,
+			exchange: "",
+			fixOn100: fixOn100,
+			fixOn25: fixOn25,
+			fixOn50: fixOn50,
+			fixOn75: fixOn75,
+			id: id,
+			symbol: symbol,
+			uid: uid
+		},
+
+		{
+			params: {
+				id: id,
+			},
+		}
+	);
+}
+
 export type { WorkingSideType, TimeFrameType }
-export { changeOptions }
+export { changeOptions, closePosition, updateCoinValue }
