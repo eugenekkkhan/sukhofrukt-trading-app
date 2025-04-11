@@ -19,13 +19,13 @@ const Navbar = () => {
     } else {
       setWebsiteName("Сухофрукт Trading Bot");
     }
-    window.addEventListener('resize', ()=>{
-      if(window.innerWidth < 720){
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 720) {
         setWebsiteName("СУХОФРУКТ");
       } else {
         setWebsiteName("Сухофрукт Trading Bot");
       }
-    })
+    });
     setTimeout(() => {
       if (navRef.current)
         navRef.current.style.transition =
@@ -41,14 +41,20 @@ const Navbar = () => {
         <div className="nav-links-text">
           <a
             href={location.pathname === "/" ? undefined : "/"}
-            className={location.pathname === "/" ? "medium green cursor-default" : "green"}
+            className={
+              location.pathname === "/"
+                ? "medium green cursor-default"
+                : "green"
+            }
           >
             Dashboard
           </a>
           <a
             href={location.pathname === "/settings" ? undefined : "/settings"}
             className={
-              location.pathname === "/settings" ? "medium green cursor-default" : "green"
+              location.pathname === "/settings"
+                ? "medium green cursor-default"
+                : "green"
             }
           >
             Настройки
@@ -56,7 +62,9 @@ const Navbar = () => {
           <a
             href={location.pathname === "/history" ? undefined : "/history"}
             className={
-              location.pathname === "/history" ? "medium green cursor-default" : "green"
+              location.pathname === "/history"
+                ? "medium green cursor-default"
+                : "green"
             }
           >
             История
@@ -65,24 +73,36 @@ const Navbar = () => {
         {/* Icons */}
         <div className="nav-links-icons">
           <a href={location.pathname === "/" ? undefined : "/"}>
-            <RxDashboard 
-              cursor='pointer'
+            <RxDashboard
+              cursor="pointer"
               size={28}
-              className={location.pathname === "/" ? "green cursor-default" : "green-light"} 
+              className={
+                location.pathname === "/"
+                  ? "green cursor-default"
+                  : "green-light"
+              }
             />
           </a>
           <a href={location.pathname === "/settings" ? undefined : "/settings"}>
-            <SlSettings 
-              cursor='pointer'
+            <SlSettings
+              cursor="pointer"
               size={28}
-              className={location.pathname === "/settings" ? "green cursor-default" : "green-light"} 
+              className={
+                location.pathname === "/settings"
+                  ? "green cursor-default"
+                  : "green-light"
+              }
             />
           </a>
           <a href={location.pathname === "/history" ? undefined : "/history"}>
-            <GoHistory 
-              cursor='pointer'
-              size={28} 
-              className={location.pathname === "/history" ? "green cursor-default" : "green-light"} 
+            <GoHistory
+              cursor="pointer"
+              size={28}
+              className={
+                location.pathname === "/history"
+                  ? "green cursor-default"
+                  : "green-light"
+              }
             />
           </a>
         </div>

@@ -3,7 +3,6 @@ import AddCoin from "../components/AddCoin/AddCoin";
 import SelectorsInSettings from "../components/SelectorsInSettings/SelectorsInSettings";
 
 const Settings = () => {
-
   return (
     <>
       <SelectorsInSettings />

@@ -16,7 +16,9 @@ function Home() {
   const [message, setMessage] = useState<socketMessageType | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("wss://альпийские-тетерева.рф/ws?uid=844639124690");
+    const ws = new WebSocket(
+      "wss://альпийские-тетерева.рф/ws?uid=844639124690",
+    );
 
     ws.onmessage = (event: MessageEvent) => {
       setMessage(JSON.parse(event.data));
@@ -30,7 +32,7 @@ function Home() {
       <div className="flex-column basic-block bottom-border">
         <div className="flex-row gap">
           <div className="rotate icon">
-            <RxDashboard size='100%'/>
+            <RxDashboard size="100%" />
           </div>
           <h1>Dashboard</h1>
         </div>

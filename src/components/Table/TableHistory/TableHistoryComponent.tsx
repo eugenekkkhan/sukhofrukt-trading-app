@@ -1,47 +1,36 @@
-import { useEffect, useState } from 'react';
-import { getCookie } from '../../../utils';
-import '../Table.css'
-import { fetchHistory } from '../../../getQueries';
-import TableHistoryElement, { HistoryDataType } from './TableHistoryElement';
+import { useEffect, useState } from "react";
+import { getCookie } from "../../../utils";
+import "../Table.css";
+import { fetchHistory } from "../../../getQueries";
+import TableHistoryElement, { HistoryDataType } from "./TableHistoryElement";
 
+type THCFetchedDataType = {
+  amount: number;
+  cost: number;
+  fix: number;
+  positionCreateTime: number;
+  side: string;
+  symbol: string;
+  userId: number;
+};
 
 const TableHistoryComponent = () => {
-  const hardCodeData: HistoryDataType[] = [
-    {
-      amount: -103,
-      cost: 230,
-      fix: 10,
-      positionCreateTime: 0,
-      side: 'SHORT',
-      symbol: 'BTCUSDT',
-      userId: 0
-    },
-    {
-      amount: 0,
-      cost: 0,
-      fix: 0,
-      positionCreateTime: 0,
-      side: 'LONG',
-      symbol: 'ETHUSDT',
-      userId: 0
-    }
-  ]
-  const [isFetched, setIsFetched] = useState<boolean>(false)
-  const [fetchedData, setFetchedData] = useState<any[]>([])
-  const id = getCookie('id');
+  const [isFetched, setIsFetched] = useState<boolean>(false);
+  const [fetchedData, setFetchedData] = useState<THCFetchedDataType[]>([]);
+  const id = getCookie("id");
 
   useEffect(() => {
     if (id && !isFetched) {
-      fetchHistory(id)
-        .then((res) => {
-          setFetchedData(res.data);
-          setIsFetched(true);
-        })
+      fetchHistory(id).then((res) => {
+        setFetchedData(res.data);
+        console.log(res.data);
+        setIsFetched(true);
+      });
     }
-  })
+  });
   return (
     <div>
-      <div className='table'>
+      <div className="table">
         {fetchedData.map((value, index) => (
           <TableHistoryElement
             key={index}
@@ -52,17 +41,13 @@ const TableHistoryComponent = () => {
             side={value.side}
             symbol={value.symbol}
             userId={value.userId}
-            isLast={index === fetchedData.length - 1} 
+            isLast={index === fetchedData.length - 1}
           />
-          )
-        )}
-        {fetchedData.length === 0 ?
-          "Нет ничего" :
-          null
-        }
+        ))}
+        {fetchedData.length === 0 ? "Нет ничего" : null}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TableHistoryComponent
+export default TableHistoryComponent;

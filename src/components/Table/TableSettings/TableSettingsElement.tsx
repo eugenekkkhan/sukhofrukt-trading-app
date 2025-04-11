@@ -5,17 +5,29 @@ import { RiDeleteBinLine, RiEditLine, RiCloseLargeFill } from "react-icons/ri";
 import { MdOutlineReplay, MdSave } from "react-icons/md";
 import TextInput from "../../TextInput/TextInput";
 import { getCookie, validateStringToNumber } from "../../../utils";
-import { canItBeSaved, initStrings, isChoiceInitial, resetValues, returnStringWithFirstFloatingPoint, saveCoinValue, TableSettingsElementProps } from "./TSEFuncs";
+import {
+  canItBeSaved,
+  initStrings,
+  isChoiceInitial,
+  resetValues,
+  returnStringWithFirstFloatingPoint,
+  saveCoinValue,
+  TableSettingsElementProps,
+} from "./TSEFuncs";
+import { removeCoinValue } from "../../../postQueries";
 
 const TableSettingsElement = ({
   tradePair,
   initValues,
   isLast,
-  uid,
-  amount
+  coinId,
+  amount,
+  delFunc,
 }: TableSettingsElementProps) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const choices = new Array<[string, React.Dispatch<React.SetStateAction<string>>]>(5);
+  const choices = new Array<
+    [string, React.Dispatch<React.SetStateAction<string>>]
+  >(5);
   const [valuesOfInputs, setValuesOfInputs]: [
     string[],
     React.Dispatch<React.SetStateAction<string>>[],
@@ -27,7 +39,7 @@ const TableSettingsElement = ({
     setValuesOfInputs[i] = choices[i][1];
   }
 
-  const id = getCookie('id');
+  const id = getCookie("id");
 
   return (
     <div
@@ -47,7 +59,17 @@ const TableSettingsElement = ({
               setIsEditing((prev) => !prev);
             }}
           />
-          <ButtonWithIcon className="coral-light-bg" Icon={RiDeleteBinLine} />
+          <ButtonWithIcon
+            className="coral-light-bg"
+            Icon={RiDeleteBinLine}
+            onClick={() => {
+              if (id && parseInt(id)) {
+                removeCoinValue(parseInt(id), tradePair).then(() => {
+                  delFunc();
+                });
+              }
+            }}
+          />
         </div>
       </div>
       {isEditing ? (
@@ -57,7 +79,7 @@ const TableSettingsElement = ({
             <TextInput
               style={{ width: "180px" }}
               value={valuesOfInputs[0]}
-              id={''}
+              id={""}
               onChange={(event: ChangeEvent<HTMLInputElement>) => {
                 setValuesOfInputs[0](
                   returnStringWithFirstFloatingPoint(
@@ -85,7 +107,7 @@ const TableSettingsElement = ({
                 <TextInput
                   style={{ width: "45px" }}
                   value={value}
-                  id={''}
+                  id={""}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => {
                     setValuesOfInputs[index + 1](
                       returnStringWithFirstFloatingPoint(
@@ -100,7 +122,8 @@ const TableSettingsElement = ({
                     );
                   }}
                   color={
-                    (validateStringToNumber(value) !== false && parseFloat(value) <= 1)
+                    validateStringToNumber(value) !== false &&
+                    parseFloat(value) <= 1
                       ? ""
                       : "coral coral-border"
                   }
@@ -113,7 +136,9 @@ const TableSettingsElement = ({
           </p>
           <div
             className="flex-row justify-end table-element-gap"
-            style={{ paddingTop: !isChoiceInitial(choices, initValues) ? "8px" : "0px" }}
+            style={{
+              paddingTop: !isChoiceInitial(choices, initValues) ? "8px" : "0px",
+            }}
           >
             {!isChoiceInitial(choices, initValues) ? (
               <ButtonWithIcon
@@ -123,17 +148,20 @@ const TableSettingsElement = ({
                 onClick={() => resetValues(setValuesOfInputs, initValues)}
               />
             ) : null}
-            {!isChoiceInitial(choices, initValues) && canItBeSaved(valuesOfInputs) ? (
-              <ButtonWithIcon 
-                text="Сохранить" 
-                Icon={MdSave} 
-                onClick={()=>saveCoinValue(
-                  valuesOfInputs as initStrings, 
-                  amount, 
-                  tradePair, 
-                  uid,
-                  id ?? undefined
-                )}
+            {!isChoiceInitial(choices, initValues) &&
+            canItBeSaved(valuesOfInputs) ? (
+              <ButtonWithIcon
+                text="Сохранить"
+                Icon={MdSave}
+                onClick={() =>
+                  saveCoinValue(
+                    valuesOfInputs as initStrings,
+                    amount,
+                    tradePair,
+                    coinId,
+                    id ?? undefined,
+                  )
+                }
               />
             ) : null}
           </div>

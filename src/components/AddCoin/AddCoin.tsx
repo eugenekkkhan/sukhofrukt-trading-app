@@ -3,16 +3,14 @@ import { RiCloseLargeFill, RiAddLargeFill } from "react-icons/ri";
 import "./AddCoin.css";
 import ButtonWithIcon from "../Buttons/ButtonWithIcon";
 import { MdOutlineReplay } from "react-icons/md";
-import '../../index.css'
+import "../../index.css";
 
 const AddCoin = () => {
   const [isAdding, setIsAdding] = useState<boolean>(false);
   return (
     <div className="parent">
       <div className={isAdding ? "window adding-window" : "window"}>
-        <p>
-          Добавить
-        </p>
+        <p>Добавить</p>
         <div className="flex-row gap">
           <ButtonWithIcon
             text="Сброс"

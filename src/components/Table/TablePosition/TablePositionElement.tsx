@@ -10,6 +10,7 @@ type TablePositionElementProps = {
   tradePair: string;
   unrealizedPL: number;
   currentAmountInDollars: number;
+  delFunc: () => void;
   amountOfCoins: number;
   whenOpened?: number;
   percentage?: number;
@@ -26,7 +27,8 @@ const TablePositionElement = ({
   currentAmountInDollars,
   unrealizedPL,
   whenOpened,
-  percentage = (unrealizedPL / (currentAmountInDollars-unrealizedPL)) * 100,
+  delFunc,
+  percentage = (unrealizedPL / (currentAmountInDollars - unrealizedPL)) * 100,
   isLast = false,
 }: TablePositionElementProps) => {
   const timeOpened = whenOpened ? new Date(whenOpened) : null;
@@ -34,8 +36,10 @@ const TablePositionElement = ({
 
   const closePositionFunction = () => {
     if (id && parseInt(id))
-      closePosition(parseInt(id), tradePair)
-  }
+      closePosition(parseInt(id), tradePair).then(() => {
+        delFunc();
+      });
+  };
 
   return (
     <div
@@ -48,7 +52,10 @@ const TablePositionElement = ({
       <p>{tradePair}</p>
       <div className="flex-row table-element-gap">
         <div className="text-right text-small">
-          <p>{currentAmountInDollars.toFixed(2)} $ {timeOpened?.toLocaleDateString()}</p>
+          <p>
+            {currentAmountInDollars.toFixed(2)} ${" "}
+            {timeOpened?.toLocaleDateString()}
+          </p>
           <p
             className={
               percentage > 0 ? "green-light" : percentage < 0 ? "coral" : ""
@@ -59,10 +66,10 @@ const TablePositionElement = ({
             {percentage.toFixed(2).replace("-", "–")} %)
           </p>
         </div>
-        <ButtonWithIcon 
-          className="coral-light-bg" 
+        <ButtonWithIcon
+          className="coral-light-bg"
           text="Закрыть"
-          onClick={closePositionFunction} 
+          onClick={closePositionFunction}
         />
       </div>
     </div>

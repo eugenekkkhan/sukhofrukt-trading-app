@@ -42,7 +42,7 @@ const SelectComponent = ({
 
   return (
     <>
-      <div className={isActive ? "select active": "select"}>
+      <div className={isActive ? "select active" : "select"}>
         <div
           className="select under"
           style={{ height: isActive ? `${options.length * 22 + 18}px` : "4px" }}
@@ -62,7 +62,7 @@ const SelectComponent = ({
                 setIsActive(false);
               }}
             >
-              {value}
+              <p>{value}</p>
             </div>
           );
         })}

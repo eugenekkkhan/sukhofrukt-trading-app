@@ -10,7 +10,13 @@ const Loading = ({
   height?: string;
 }) => {
   return (
-    <div className="screen" style={{ width: `calc(${width} - 48px)`, height: `calc(${height} - 48px)` }}>
+    <div
+      className="screen"
+      style={{
+        width: `calc(${width} - 48px)`,
+        height: `calc(${height} - 48px)`,
+      }}
+    >
       <div className="loading-wrapper">
         <AiOutlineLoading3Quarters className="loading" size={48} />
       </div>

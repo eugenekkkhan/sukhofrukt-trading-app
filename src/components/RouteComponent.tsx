@@ -19,12 +19,14 @@ const RouteComponent = () => {
 
   useEffect(() => {
     if (id) {
-      verifyID(id).then((res: AxiosResponse<boolean>) => {
-        setIsVerified(res.data);
-        setIsFetched(true);
-      }).catch((err: AxiosError)=>{
-        setIsError(err.code ?? false);
-      });
+      verifyID(id)
+        .then((res: AxiosResponse<boolean>) => {
+          setIsVerified(res.data);
+          setIsFetched(true);
+        })
+        .catch((err: AxiosError) => {
+          setIsError(err.code ?? false);
+        });
     }
   });
 
@@ -33,8 +35,11 @@ const RouteComponent = () => {
       {id == null || !isVerified ? null : <Navbar />}
       <Routes>
         {!isFetched && id ? (
-          !isError ? <Route path="/*" element={<Loading />} /> : 
-          <Route path="/*" element={<ErrorComponent error={isError}/>} />
+          !isError ? (
+            <Route path="/*" element={<Loading />} />
+          ) : (
+            <Route path="/*" element={<ErrorComponent error={isError} />} />
+          )
         ) : id == null || !isVerified ? (
           <Route path="/*" element={<Login />} />
         ) : (
