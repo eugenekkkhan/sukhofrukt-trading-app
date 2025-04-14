@@ -67,7 +67,6 @@ const updateCoinValue = async (
     symbol: symbol,
   };
 
-  console.log(body);
   return await axios.post(
     import.meta.env.VITE_BASE_URL + apiUrl + "private/updateCoinValue",
     body,

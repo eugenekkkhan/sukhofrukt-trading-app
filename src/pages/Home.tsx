@@ -37,7 +37,7 @@ function Home() {
           <h1>Dashboard</h1>
         </div>
         <p className="bold">Баланс:</p>
-        <div className="flex-row">
+        <div className="flex-row flex-wrap">
           <p className="light">
             {message?.accountEquity.toFixed(2).replace("-", "–") ?? 0} $
           </p>

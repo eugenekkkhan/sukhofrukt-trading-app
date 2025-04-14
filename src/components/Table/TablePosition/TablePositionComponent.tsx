@@ -96,6 +96,7 @@ const TablePositionComponent = () => {
       )}
       {isFetched && fetchedData.length === 0 ? (
         <div
+          className="gray"
           style={{ display: "flex", justifyContent: "center", padding: "16px" }}
         >
           Нет открытых позиций

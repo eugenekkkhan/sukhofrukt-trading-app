@@ -7,10 +7,6 @@ const Settings = () => {
     <>
       <SelectorsInSettings />
       <div className="flex-column basic-block bottom-border">
-        <div className="flex-row justify-between">
-          <h3>МОНЕТЫ</h3>
-          <AddCoin />
-        </div>
         <TableSettingsComponent />
       </div>
     </>

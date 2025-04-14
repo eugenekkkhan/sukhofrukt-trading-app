@@ -59,12 +59,7 @@ const saveCoinValue = (
     (values) => parseFloat(values),
   ) as TableSettingsElementProps["initValues"];
   if (id && parseInt(id)) {
-    updateCoinValue(...valuesInt, amount, symbol, coinId, parseInt(id)).then(
-      (res) => {
-        console.log(res.data, values.join(", "), symbol, coinId, id);
-      },
-    );
-    console.log("hey");
+    return updateCoinValue(...valuesInt, amount, symbol, coinId, parseInt(id))
   }
 };
 

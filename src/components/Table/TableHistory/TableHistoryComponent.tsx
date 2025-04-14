@@ -23,7 +23,6 @@ const TableHistoryComponent = () => {
     if (id && !isFetched) {
       fetchHistory(id).then((res) => {
         setFetchedData(res.data);
-        console.log(res.data);
         setIsFetched(true);
       });
     }
