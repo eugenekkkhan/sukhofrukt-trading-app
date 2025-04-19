@@ -1,4 +1,3 @@
-import React from "react";
 import "./Error.css";
 import ButtonWithIcon from "../Buttons/ButtonWithIcon";
 import { MdLogout, MdOutlineReplay, MdErrorOutline } from "react-icons/md";

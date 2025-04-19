@@ -1,5 +1,5 @@
 import { IconType } from "react-icons";
-import Button, { ButtonProps } from "./Button";
+import Button from "./Button";
 
 type ButtonWithIconProps = {
   Icon?: IconType;

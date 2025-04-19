@@ -3,9 +3,7 @@ import "./Navbar.css";
 import { useLocation } from "react-router";
 import ThemeSwitcher from "../ThemeSwitcher";
 import { RxDashboard } from "react-icons/rx";
-import ButtonWithIcon from "../Buttons/ButtonWithIcon";
 import { SlSettings } from "react-icons/sl";
-import { MdHistory } from "react-icons/md";
 import { GoHistory } from "react-icons/go";
 
 const Navbar = () => {

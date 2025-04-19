@@ -59,7 +59,7 @@ const saveCoinValue = (
     (values) => parseFloat(values),
   ) as TableSettingsElementProps["initValues"];
   if (id && parseInt(id)) {
-    return updateCoinValue(...valuesInt, amount, symbol, coinId, parseInt(id))
+    return updateCoinValue(...valuesInt, amount, symbol, coinId, parseInt(id));
   }
 };
 

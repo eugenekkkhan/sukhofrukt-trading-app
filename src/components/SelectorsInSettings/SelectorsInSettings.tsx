@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { fetchUserOptions } from "../../getQueries";
 import {
   WorkingSideType,

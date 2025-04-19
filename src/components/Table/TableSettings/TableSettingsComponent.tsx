@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPositions, getAllCoinValues } from "../../../getQueries";
+import { getAllCoinValues } from "../../../getQueries";
 import { getCookie } from "../../../utils";
 import TableSettingsElement from "./TableSettingsElement";
 import Loading from "../../Loading/Loading";
@@ -45,8 +45,8 @@ const TableSettingsComponent = () => {
     <>
       <div className="flex-row justify-between">
         <h3>МОНЕТЫ</h3>
-        <AddCoin 
-          coinId={Math.max(...fetchedData.map((value)=>value.id))+1}
+        <AddCoin
+          coinId={Math.max(...fetchedData.map((value) => value.id)) + 1}
           id={id ? id : ""}
         />
       </div>

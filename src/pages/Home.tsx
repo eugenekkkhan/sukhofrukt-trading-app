@@ -3,8 +3,6 @@ import PanelWithInfo from "../components/PanelWithInfo/PanelWithInfo";
 import { RxDashboard } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import TablePositionComponent from "../components/Table/TablePosition/TablePositionComponent";
-import { closePosition } from "../postQueries";
-import { getCookie } from "../utils";
 
 type socketMessageType = {
   accountEquity: number;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getCookie } from "../../../utils";
 import "../Table.css";
 import { fetchHistory } from "../../../getQueries";
-import TableHistoryElement, { HistoryDataType } from "./TableHistoryElement";
+import TableHistoryElement from "./TableHistoryElement";
 
 type THCFetchedDataType = {
   amount: number;

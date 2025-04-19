@@ -23,35 +23,7 @@ const deleteElementFromTable = (
 };
 
 const TablePositionComponent = () => {
-  const data: Position[] = [
-    {
-      amount: 0,
-      percentage: 0,
-      side: "OS",
-      symbol: "BTCUSDT",
-      unrealizedPL: 0,
-      usdtEquity: 0,
-      cTimestamp: 0,
-    },
-    {
-      amount: 0,
-      percentage: 0,
-      side: "OL",
-      symbol: "ETHUSDT",
-      unrealizedPL: 0,
-      usdtEquity: 0,
-      cTimestamp: 0,
-    },
-    {
-      amount: 0,
-      percentage: 0,
-      side: "OS",
-      symbol: "BNBUSDT",
-      unrealizedPL: 0,
-      usdtEquity: 0,
-      cTimestamp: 0,
-    },
-  ];
+
   const [fetchedData, setFetchedData] = useState<Position[]>([]);
   const [isFetched, setIsFetched] = useState<boolean>(false);
 
@@ -71,7 +43,6 @@ const TablePositionComponent = () => {
 
   return (
     <div className="table">
-      {/* {fetchedData.map((value)=>(<div>{Object.values(value).join('...')} {Object.keys(value).join('...')}</div>))} */}
       {isFetched ? (
         fetchedData.map((value, index) => (
           <TablePositionElement
