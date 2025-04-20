@@ -15,7 +15,7 @@ import {
   TableSettingsElementProps,
 } from "./TSEFuncs";
 import { removeCoinValue } from "../../../postQueries";
-//
+
 const TableSettingsElement = ({
   tradePair,
   initValues,
@@ -75,7 +75,7 @@ const TableSettingsElement = ({
       {isEditing ? (
         <div>
           <div className="flex-row gap flex-wrap pt-8">
-            <p>На сколько закупать: </p>
+            <p>Объем USDT в сделке: </p>
             <TextInput
               style={{ width: "180px" }}
               value={valuesOfInputs[0]}

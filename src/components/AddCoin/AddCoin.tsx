@@ -37,7 +37,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
       <div className={isAdding ? "window adding-window" : "window"}>
         <div className="flex-column gap">
           <p className="bold">Добавление монеты</p>
-          <p>Название монеты:</p>
+          <p>Название торговой пары:</p>
           <TextInput
             value={valuesOfInputs.name}
             onChange={(e) =>
@@ -47,14 +47,13 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                   .toUpperCase()
                   .split("")
                   .filter((value) =>
-                    "QWERTYUIOPASDFGHJKLZXCVBNM".includes(value),
+                    "QWERTYUIOPASDFGHJKLZXCVBNM0123456789".includes(value),
                   )
                   .join(""),
               })
-              //
             }
           />
-          <p>На сколько купить:</p>
+          <p>Объем USDT в сделке:</p>
           <TextInput
             value={valuesOfInputs.equity}
             onChange={(e) =>
