@@ -15,7 +15,7 @@ import {
   TableSettingsElementProps,
 } from "./TSEFuncs";
 import { removeCoinValue } from "../../../postQueries";
-
+//
 const TableSettingsElement = ({
   tradePair,
   initValues,

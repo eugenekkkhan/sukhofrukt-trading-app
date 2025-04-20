@@ -9,7 +9,7 @@ type socketMessageType = {
   unrealizedPL: number;
   today: number;
 };
-
+//
 function Home() {
   const [message, setMessage] = useState<socketMessageType | null>(null);
 
