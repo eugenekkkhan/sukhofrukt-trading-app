@@ -51,6 +51,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                   )
                   .join(""),
               })
+              //
             }
           />
           <p>На сколько купить:</p>
