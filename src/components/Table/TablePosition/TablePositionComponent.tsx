@@ -52,6 +52,7 @@ const TablePositionComponent = () => {
             unrealizedPL={value.unrealizedPL}
             amountOfCoins={value.amount}
             percentage={value.percentage}
+            side={value.side}
             isLast={
               index === fetchedData.length - 1 || fetchedData.length !== 1
             }
