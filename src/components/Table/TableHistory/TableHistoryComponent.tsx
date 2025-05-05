@@ -35,7 +35,7 @@ const TableHistoryComponent = () => {
             key={index}
             amount={value.amount}
             cost={value.cost}
-            fix={value.fix}
+            fix={value.fix * 100}
             positionCreateTime={value.positionCreateTime}
             side={value.side}
             symbol={value.symbol}
