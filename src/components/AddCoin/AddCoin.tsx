@@ -76,7 +76,6 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
           <div className="flex-row gap align-center">
             <p>25%</p>
             <TextInput
-              className="fix-input"
               value={valuesOfInputs.fixOn25}
               onChange={(e) =>
                 setValuesOfInputs({
@@ -103,7 +102,6 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
           <div className="flex-row gap align-center">
             <p>50%</p>
             <TextInput
-              className="fix-input"
               value={valuesOfInputs.fixOn50}
               onChange={(e) =>
                 setValuesOfInputs({
@@ -130,7 +128,6 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
           <div className="flex-row gap align-center">
             <p>75%</p>
             <TextInput
-              className="fix-input"
               value={valuesOfInputs.fixOn75}
               onChange={(e) =>
                 setValuesOfInputs({
@@ -157,7 +154,6 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
           <div className="flex-row gap align-center">
             <p>100%</p>
             <TextInput
-              className="fix-input"
               value={valuesOfInputs.fixOn100}
               onChange={(e) =>
                 setValuesOfInputs({
