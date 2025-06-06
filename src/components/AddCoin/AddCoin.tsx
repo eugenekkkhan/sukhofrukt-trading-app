@@ -97,7 +97,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
               />
               <span className="checkmark"></span>
             </label>
-            <span className="checkbox-label-text">безубыток</span>
+            <p className="checkbox-label-text">stop-loss</p>
           </div>
           <div className="flex-row gap align-center">
             <p>50%</p>
@@ -123,7 +123,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
               />
               <span className="checkmark"></span>
             </label>
-            <span className="checkbox-label-text">безубыток</span>
+            <p className="checkbox-label-text">stop-loss</p>
           </div>
           <div className="flex-row gap align-center">
             <p>75%</p>
@@ -149,7 +149,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
               />
               <span className="checkmark"></span>
             </label>
-            <span className="checkbox-label-text">безубыток</span>
+            <p className="checkbox-label-text">stop-loss</p>
           </div>
           <div className="flex-row gap align-center">
             <p>100%</p>
