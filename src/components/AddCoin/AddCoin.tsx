@@ -73,12 +73,11 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             }
           />
           <p>Фиксирование:</p>
-          <div className="flex-row gap align-center">
-            <p>25%</p>
+          <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "center", width: "100%" }}>
             <TextInput
               value={valuesOfInputs.fixOn25}
               maxLength={6}
-              style={{ width: "160px" }}
+              style={{ width: "80px" }}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
@@ -91,22 +90,23 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 })
               }
             />
-            <label className="custom-checkbox">
-              <input
-                type="checkbox"
-                checked={valuesOfInputs.stopLossOn25}
-                onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn25: e.target.checked }))}
-              />
-              <span className="checkmark"></span>
-            </label>
-            <p className="checkbox-label-text">stop-loss</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: "120px" }}>
+              <label className="custom-checkbox">
+                <input
+                  type="checkbox"
+                  checked={valuesOfInputs.stopLossOn25}
+                  onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn25: e.target.checked }))}
+                />
+                <span className="checkmark"></span>
+              </label>
+              <p className="checkbox-label-text">stop-loss</p>
+            </div>
           </div>
-          <div className="flex-row gap align-center">
-            <p>50%</p>
+          <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "center", width: "100%" }}>
             <TextInput
               value={valuesOfInputs.fixOn50}
               maxLength={6}
-              style={{ width: "160px" }}
+              style={{ width: "80px" }}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
@@ -119,22 +119,23 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 })
               }
             />
-            <label className="custom-checkbox">
-              <input
-                type="checkbox"
-                checked={valuesOfInputs.stopLossOn50}
-                onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn50: e.target.checked }))}
-              />
-              <span className="checkmark"></span>
-            </label>
-            <p className="checkbox-label-text">stop-loss</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: "120px" }}>
+              <label className="custom-checkbox">
+                <input
+                  type="checkbox"
+                  checked={valuesOfInputs.stopLossOn50}
+                  onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn50: e.target.checked }))}
+                />
+                <span className="checkmark"></span>
+              </label>
+              <p className="checkbox-label-text">stop-loss</p>
+            </div>
           </div>
-          <div className="flex-row gap align-center">
-            <p>75%</p>
+          <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "center", width: "100%" }}>
             <TextInput
               value={valuesOfInputs.fixOn75}
               maxLength={6}
-              style={{ width: "160px" }}
+              style={{ width: "80px" }}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
@@ -147,22 +148,23 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 })
               }
             />
-            <label className="custom-checkbox">
-              <input
-                type="checkbox"
-                checked={valuesOfInputs.stopLossOn75}
-                onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn75: e.target.checked }))}
-              />
-              <span className="checkmark"></span>
-            </label>
-            <p className="checkbox-label-text">stop-loss</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: "120px" }}>
+              <label className="custom-checkbox">
+                <input
+                  type="checkbox"
+                  checked={valuesOfInputs.stopLossOn75}
+                  onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn75: e.target.checked }))}
+                />
+                <span className="checkmark"></span>
+              </label>
+              <p className="checkbox-label-text">stop-loss</p>
+            </div>
           </div>
-          <div className="flex-row gap align-center">
-            <p>100%</p>
+          <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "center", width: "100%" }}>
             <TextInput
               value={valuesOfInputs.fixOn100}
               maxLength={6}
-              style={{ width: "160px" }}
+              style={{ width: "80px" }}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
@@ -175,15 +177,17 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 })
               }
             />
-            <label className="custom-checkbox">
-              <input
-                type="checkbox"
-                checked={valuesOfInputs.stopLossOn100}
-                onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn100: e.target.checked }))}
-              />
-              <span className="checkmark"></span>
-            </label>
-            <p className="checkbox-label-text">stop-loss</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: "120px" }}>
+              <label className="custom-checkbox">
+                <input
+                  type="checkbox"
+                  checked={valuesOfInputs.stopLossOn100}
+                  onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn100: e.target.checked }))}
+                />
+                <span className="checkmark"></span>
+              </label>
+              <p className="checkbox-label-text">stop-loss</p>
+            </div>
           </div>
           <p className="gray">Вводимое значение – дробное число от 0 до 1</p>
           <div className="flex-row gap">
