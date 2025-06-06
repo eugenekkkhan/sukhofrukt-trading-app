@@ -74,6 +74,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
           />
           <p>Фиксирование:</p>
           <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "center", width: "100%" }}>
+            <p style={{ width: 40, minWidth: 32, textAlign: "right" }}>25%</p>
             <TextInput
               value={valuesOfInputs.fixOn25}
               maxLength={6}
@@ -103,6 +104,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             </div>
           </div>
           <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "center", width: "100%" }}>
+            <p style={{ width: 40, minWidth: 32, textAlign: "right" }}>50%</p>
             <TextInput
               value={valuesOfInputs.fixOn50}
               maxLength={6}
@@ -132,6 +134,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             </div>
           </div>
           <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "center", width: "100%" }}>
+            <p style={{ width: 40, minWidth: 32, textAlign: "right" }}>75%</p>
             <TextInput
               value={valuesOfInputs.fixOn75}
               maxLength={6}
@@ -161,6 +164,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             </div>
           </div>
           <div className="flex-row" style={{ justifyContent: "space-between", alignItems: "center", width: "100%" }}>
+            <p style={{ width: 40, minWidth: 32, textAlign: "right" }}>100%</p>
             <TextInput
               value={valuesOfInputs.fixOn100}
               maxLength={6}
