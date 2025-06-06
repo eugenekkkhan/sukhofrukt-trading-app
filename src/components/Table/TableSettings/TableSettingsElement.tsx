@@ -52,6 +52,62 @@ const TableSettingsElement = ({
           : "table-element-padding"
       }
     >
+      <style>
+        {`
+          .custom-checkbox {
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+            user-select: none;
+          }
+          
+          .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+          }
+          
+          .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+          }
+          
+          .custom-checkbox:hover input ~ .checkmark {
+            border-color: #666;
+          }
+          
+          .custom-checkbox input:checked ~ .checkmark {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+          }
+          
+          .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+          
+          .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+          }
+        `}
+      </style>
       <div className={"flex-row justify-between"}>
         <p className={isEditing ? "medium" : ""}>{tradePair}</p>
         <div className="flex-row table-element-gap">
@@ -134,16 +190,19 @@ const TableSettingsElement = ({
                   />
                 </div>
                 <div className="flex-row gap align-center">
-                  <input
-                    type="checkbox"
-                    checked={breakEvenChecks[index]}
-                    onChange={(e) => {
-                      const newChecks = [...breakEvenChecks];
-                      newChecks[index] = e.target.checked;
-                      setBreakEvenChecks(newChecks);
-                    }}
-                  />
-                  <p>безубыток</p>
+                  <label className="custom-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={breakEvenChecks[index]}
+                      onChange={(e) => {
+                        const newChecks = [...breakEvenChecks];
+                        newChecks[index] = e.target.checked;
+                        setBreakEvenChecks(newChecks);
+                      }}
+                    />
+                    <span className="checkmark"></span>
+                    <p>безубыток</p>
+                  </label>
                 </div>
               </div>
             ))}
