@@ -50,10 +50,10 @@
 .window {
   display: none;
   position: absolute;
-  width: calc(325px - 24px);
+  width: 420px;
   background-color: var(--primary);
   box-shadow: inset 0 0 0 1px var(--gray);
-  height: 200px;
+  min-height: 320px;
   border-radius: 18px;
   transition:
     color 300ms ease-out,
@@ -72,4 +72,13 @@
 .adding-window {
   transform: rotate(0deg);
   display: inline;
+  min-height: 320px;
+  width: 420px;
+}
+
+.fix-input {
+  width: 60px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
