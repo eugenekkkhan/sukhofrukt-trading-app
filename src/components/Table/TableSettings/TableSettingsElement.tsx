@@ -159,13 +159,20 @@ const TableSettingsElement = ({
               }
             />
           </div>
-          <div className="flex-row pt-8 gap flex-wrap">
+          <div
+            className="fixes-group"
+            style={{ display: "flex", justifyContent: "space-between", width: "100%", gap: "16px" }}
+          >
             {valuesOfInputs.slice(1).map((value, index) => (
-              <div className="flex-column gap" key={index}>
-                <div className="flex-row gap">
+              <div
+                className="fixes-item flex-column gap"
+                key={index}
+                style={{ flex: 1, minWidth: 0, alignItems: "center", display: "flex" }}
+              >
+                <div className="flex-row gap" style={{ width: "100%", justifyContent: "center" }}>
                   <p>Фикс. {(index + 1) * 25}%</p>
                   <TextInput
-                    style={{ width: "45px" }}
+                    style={{ width: "60px" }}
                     value={value}
                     id={""}
                     onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -189,7 +196,7 @@ const TableSettingsElement = ({
                     }
                   />
                 </div>
-                <div className="flex-row gap align-center">
+                <div className="flex-row gap align-center" style={{ width: "100%", justifyContent: "center" }}>
                   <label className="custom-checkbox">
                     <input
                       type="checkbox"
