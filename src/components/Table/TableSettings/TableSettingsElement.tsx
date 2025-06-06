@@ -33,6 +33,9 @@ const TableSettingsElement = ({
     React.Dispatch<React.SetStateAction<string>>[],
   ] = [[], []];
 
+  // Add state for checkboxes
+  const [breakEvenChecks, setBreakEvenChecks] = useState<boolean[]>([false, false, false, false]);
+
   for (let i = 0; i < 5; i++) {
     choices[i] = useState<string>(initValues[i].toString());
     valuesOfInputs[i] = choices[i][0];
@@ -102,7 +105,7 @@ const TableSettingsElement = ({
           </div>
           <div className="flex-row pt-8 gap flex-wrap">
             {valuesOfInputs.slice(1).map((value, index) => (
-              <div className="flex-row" key={index}>
+              <div className="flex-row gap" key={index}>
                 <p>Фикс. {(index + 1) * 25}%</p>
                 <TextInput
                   style={{ width: "45px" }}
@@ -128,6 +131,18 @@ const TableSettingsElement = ({
                       : "coral coral-border"
                   }
                 />
+                <div className="flex-row gap align-center">
+                  <input
+                    type="checkbox"
+                    checked={breakEvenChecks[index]}
+                    onChange={(e) => {
+                      const newChecks = [...breakEvenChecks];
+                      newChecks[index] = e.target.checked;
+                      setBreakEvenChecks(newChecks);
+                    }}
+                  />
+                  <span>безубыток по достижении</span>
+                </div>
               </div>
             ))}
           </div>
