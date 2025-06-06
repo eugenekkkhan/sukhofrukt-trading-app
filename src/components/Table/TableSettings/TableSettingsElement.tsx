@@ -141,7 +141,7 @@ const TableSettingsElement = ({
                       setBreakEvenChecks(newChecks);
                     }}
                   />
-                  <span>безубыток по достижении</span>
+                  <p>безубыток</p>
                 </div>
               </div>
             ))}
