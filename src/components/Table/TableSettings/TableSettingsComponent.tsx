@@ -86,14 +86,7 @@ const TableSettingsComponent = () => {
                 deleteElementFromTable(value, fetchedData, setFetchedData)
               }
               isLast={index === fetchedData.length - 1}
-              breakEvenValues={breakEvenValuesArr[index] || [false, false, false, false]}
-              setBreakEvenValues={newValues => {
-                setBreakEvenValuesArr(prev => {
-                  const updated = [...prev];
-                  updated[index] = newValues;
-                  return updated;
-                });
-              }}
+              initialBreakEvenValues={breakEvenValuesArr[index] || [false, false, false, false]}
             />
           ))
         ) : (

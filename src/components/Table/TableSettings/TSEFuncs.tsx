@@ -83,8 +83,7 @@ type TableSettingsElementProps = {
   coinId: number;
   amount: number;
   delFunc: () => void;
-  breakEvenValues: boolean[];
-  setBreakEvenValues: React.Dispatch<React.SetStateAction<boolean[]>>;
+  initialBreakEvenValues: boolean[];
 };
 
 export type { TableSettingsElementProps, initStrings };

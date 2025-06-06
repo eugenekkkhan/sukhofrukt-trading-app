@@ -23,8 +23,7 @@ type TableSettingsElementProps = {
   coinId: number;
   amount: number;
   delFunc: () => void;
-  breakEvenValues: boolean[];
-  setBreakEvenValues: (values: boolean[]) => void;
+  initialBreakEvenValues: boolean[];
 };
 
 const TableSettingsElement = ({
@@ -34,8 +33,7 @@ const TableSettingsElement = ({
   coinId,
   amount,
   delFunc,
-  breakEvenValues,
-  setBreakEvenValues,
+  initialBreakEvenValues,
 }: TableSettingsElementProps) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const choices = new Array<
@@ -52,7 +50,22 @@ const TableSettingsElement = ({
     setValuesOfInputs[i] = choices[i][1];
   }
 
+  const [breakEvenValues, setBreakEvenValues] = useState<boolean[]>(initialBreakEvenValues);
+
   const id = getCookie("id");
+
+  // Проверка изменений хотя бы в одной из групп
+  const isAllInitial = () => {
+    const fixChanged = valuesOfInputs.some((v, i) => v !== initValues[i].toString());
+    const stopChanged = breakEvenValues.some((v, i) => v !== initialBreakEvenValues[i]);
+    return !(fixChanged || stopChanged);
+  };
+
+  // Сброс обеих групп
+  const handleReset = () => {
+    resetValues(setValuesOfInputs, initValues);
+    setBreakEvenValues(initialBreakEvenValues);
+  };
 
   return (
     <div
@@ -227,19 +240,18 @@ const TableSettingsElement = ({
           <div
             className="flex-row justify-end table-element-gap"
             style={{
-              paddingTop: !isChoiceInitial(choices, initValues) ? "8px" : "0px",
+              paddingTop: !isAllInitial() ? "8px" : "0px",
             }}
           >
-            {!isChoiceInitial(choices, initValues) ? (
+            {!isAllInitial() ? (
               <ButtonWithIcon
                 text="Сброс"
                 Icon={MdOutlineReplay}
                 className="coral-light-bg"
-                onClick={() => resetValues(setValuesOfInputs, initValues)}
+                onClick={handleReset}
               />
             ) : null}
-            {!isChoiceInitial(choices, initValues) &&
-            canItBeSaved(valuesOfInputs) ? (
+            {!isAllInitial() && canItBeSaved(valuesOfInputs) ? (
               <ButtonWithIcon
                 text="Сохранить"
                 Icon={MdSave}
