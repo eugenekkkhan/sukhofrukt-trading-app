@@ -26,6 +26,13 @@
   align-items: center;
 }
 
+.fixes-label-input input {
+  width: 60px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .fixes-input {
   width: 60px;
   min-width: 0;
@@ -113,6 +120,10 @@
   }
   .fixes-label-input, .fixes-checkbox-row {
     justify-content: flex-start;
+  }
+  .fixes-label-input input {
+    width: 100%;
+    max-width: 120px;
   }
   .fixes-input {
     width: 100%;
