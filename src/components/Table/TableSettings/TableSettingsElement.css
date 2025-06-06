@@ -2,6 +2,7 @@
 .fixes-group {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
   gap: 16px;
   margin-top: 24px;
@@ -12,7 +13,6 @@
 .fixes-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex: 1;
   min-width: 0;
 }
@@ -22,7 +22,7 @@
   flex-direction: row;
   gap: 8px;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -36,7 +36,7 @@
   flex-direction: row;
   gap: 8px;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 8px;
 }

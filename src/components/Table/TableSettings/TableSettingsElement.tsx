@@ -15,6 +15,7 @@ import {
   TableSettingsElementProps,
 } from "./TSEFuncs";
 import { removeCoinValue } from "../../../postQueries";
+import "./TableSettingsElement.css";
 //
 const TableSettingsElement = ({
   tradePair,
@@ -161,26 +162,15 @@ const TableSettingsElement = ({
           </div>
           <div
             className="fixes-group"
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-              gap: "16px",
-              marginTop: "24px",
-              marginLeft: 0,
-              paddingLeft: 0,
-            }}
           >
             {valuesOfInputs.slice(1).map((value, index) => (
               <div
-                className="fixes-item flex-column gap"
+                className="fixes-item"
                 key={index}
-                style={{ flex: 1, minWidth: 0, alignItems: "center", display: "flex" }}
               >
-                <div className="flex-row gap" style={{ width: "100%", justifyContent: "center" }}>
+                <div className="fixes-label-input">
                   <p>Фикс. {(index + 1) * 25}%</p>
                   <TextInput
-                    style={{ width: "60px" }}
                     value={value}
                     id={""}
                     onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -204,7 +194,7 @@ const TableSettingsElement = ({
                     }
                   />
                 </div>
-                <div className="flex-row gap align-center" style={{ width: "100%", justifyContent: "center" }}>
+                <div className="fixes-checkbox-row">
                   <label className="custom-checkbox">
                     <input
                       type="checkbox"
@@ -216,8 +206,8 @@ const TableSettingsElement = ({
                       }}
                     />
                     <span className="checkmark"></span>
-                    <p>безубыток</p>
                   </label>
+                  <p className="checkbox-label-text">безубыток</p>
                 </div>
               </div>
             ))}
