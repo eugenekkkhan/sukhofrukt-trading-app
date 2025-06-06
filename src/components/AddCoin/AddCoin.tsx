@@ -77,6 +77,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             <p>25%</p>
             <TextInput
               value={valuesOfInputs.fixOn25}
+              maxLength={6}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
@@ -103,6 +104,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             <p>50%</p>
             <TextInput
               value={valuesOfInputs.fixOn50}
+              maxLength={6}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
@@ -129,6 +131,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             <p>75%</p>
             <TextInput
               value={valuesOfInputs.fixOn75}
+              maxLength={6}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
@@ -155,6 +158,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             <p>100%</p>
             <TextInput
               value={valuesOfInputs.fixOn100}
+              maxLength={6}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
