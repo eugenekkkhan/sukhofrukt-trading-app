@@ -105,32 +105,34 @@ const TableSettingsElement = ({
           </div>
           <div className="flex-row pt-8 gap flex-wrap">
             {valuesOfInputs.slice(1).map((value, index) => (
-              <div className="flex-row gap" key={index}>
-                <p>Фикс. {(index + 1) * 25}%</p>
-                <TextInput
-                  style={{ width: "45px" }}
-                  value={value}
-                  id={""}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                    setValuesOfInputs[index + 1](
-                      returnStringWithFirstFloatingPoint(
-                        event.target.value
-                          .replace(",", ".")
-                          .split("")
-                          .filter((char) => {
-                            return "0123456789.".includes(char) ? true : false;
-                          })
-                          .join(""),
-                      ),
-                    );
-                  }}
-                  color={
-                    validateStringToNumber(value) !== false &&
-                    parseFloat(value) <= 1
-                      ? ""
-                      : "coral coral-border"
-                  }
-                />
+              <div className="flex-column gap" key={index}>
+                <div className="flex-row gap">
+                  <p>Фикс. {(index + 1) * 25}%</p>
+                  <TextInput
+                    style={{ width: "45px" }}
+                    value={value}
+                    id={""}
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                      setValuesOfInputs[index + 1](
+                        returnStringWithFirstFloatingPoint(
+                          event.target.value
+                            .replace(",", ".")
+                            .split("")
+                            .filter((char) => {
+                              return "0123456789.".includes(char) ? true : false;
+                            })
+                            .join(""),
+                        ),
+                      );
+                    }}
+                    color={
+                      validateStringToNumber(value) !== false &&
+                      parseFloat(value) <= 1
+                        ? ""
+                        : "coral coral-border"
+                    }
+                  />
+                </div>
                 <div className="flex-row gap align-center">
                   <input
                     type="checkbox"
