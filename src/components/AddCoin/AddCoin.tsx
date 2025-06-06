@@ -20,13 +20,17 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
     fixOn50: "",
     fixOn75: "",
     fixOn100: "",
+    stopLossOn25: false,
+    stopLossOn50: false,
+    stopLossOn75: false,
+    stopLossOn100: false,
   });
 
   const canItBeSaved = () => {
     return (
       Object.values(valuesOfInputs)
-        .slice(2)
-        .every((value) => parseFloat(value) < 1) &&
+        .slice(2, 6) // Only get the fix values, excluding stopLoss booleans
+        .every((value) => !value || (typeof value === 'string' && parseFloat(value) < 1)) &&
       valuesOfInputs.equity.length > 0 &&
       valuesOfInputs.name.length > 0
     );
@@ -51,7 +55,6 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                   )
                   .join(""),
               })
-              //
             }
           />
           <p>На сколько купить:</p>
@@ -70,7 +73,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             }
           />
           <p>Фиксирование:</p>
-          <div className="flex-row gap">
+          <div className="flex-row gap align-center">
             <p>25%</p>
             <TextInput
               value={valuesOfInputs.fixOn25}
@@ -86,8 +89,17 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 })
               }
             />
+            <label className="custom-checkbox">
+              <input
+                type="checkbox"
+                checked={valuesOfInputs.stopLossOn25}
+                onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn25: e.target.checked }))}
+              />
+              <span className="checkmark"></span>
+            </label>
+            <span className="checkbox-label-text">безубыток</span>
           </div>
-          <div className="flex-row gap">
+          <div className="flex-row gap align-center">
             <p>50%</p>
             <TextInput
               value={valuesOfInputs.fixOn50}
@@ -103,8 +115,17 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 })
               }
             />
+            <label className="custom-checkbox">
+              <input
+                type="checkbox"
+                checked={valuesOfInputs.stopLossOn50}
+                onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn50: e.target.checked }))}
+              />
+              <span className="checkmark"></span>
+            </label>
+            <span className="checkbox-label-text">безубыток</span>
           </div>
-          <div className="flex-row gap">
+          <div className="flex-row gap align-center">
             <p>75%</p>
             <TextInput
               value={valuesOfInputs.fixOn75}
@@ -120,8 +141,17 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 })
               }
             />
+            <label className="custom-checkbox">
+              <input
+                type="checkbox"
+                checked={valuesOfInputs.stopLossOn75}
+                onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn75: e.target.checked }))}
+              />
+              <span className="checkmark"></span>
+            </label>
+            <span className="checkbox-label-text">безубыток</span>
           </div>
-          <div className="flex-row gap">
+          <div className="flex-row gap align-center">
             <p>100%</p>
             <TextInput
               value={valuesOfInputs.fixOn100}
@@ -137,6 +167,15 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 })
               }
             />
+            <label className="custom-checkbox">
+              <input
+                type="checkbox"
+                checked={valuesOfInputs.stopLossOn100}
+                onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn100: e.target.checked }))}
+              />
+              <span className="checkmark"></span>
+            </label>
+            <span className="checkbox-label-text">безубыток</span>
           </div>
           <p className="gray">Вводимое значение – дробное число от 0 до 1</p>
           <div className="flex-row gap">
@@ -153,6 +192,10 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                     fixOn50: "",
                     fixOn75: "",
                     fixOn100: "",
+                    stopLossOn25: false,
+                    stopLossOn50: false,
+                    stopLossOn75: false,
+                    stopLossOn100: false,
                   });
                 }}
               />
@@ -163,11 +206,23 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 Icon={RiAddLargeFill}
                 onClick={() => {
                   saveCoinValue(
-                    Object.values(valuesOfInputs).slice(1) as initStrings,
+                    [
+                      valuesOfInputs.equity,
+                      valuesOfInputs.fixOn25,
+                      valuesOfInputs.fixOn50,
+                      valuesOfInputs.fixOn75,
+                      valuesOfInputs.fixOn100,
+                    ] as initStrings,
                     0,
                     valuesOfInputs.name,
                     coinId,
                     id ?? undefined,
+                    [
+                      valuesOfInputs.stopLossOn25,
+                      valuesOfInputs.stopLossOn50,
+                      valuesOfInputs.stopLossOn75,
+                      valuesOfInputs.stopLossOn100,
+                    ]
                   )?.then(() => window.location.reload());
                 }}
               />

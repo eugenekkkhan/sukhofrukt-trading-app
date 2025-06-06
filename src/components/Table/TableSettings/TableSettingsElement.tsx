@@ -8,7 +8,6 @@ import { getCookie, validateStringToNumber } from "../../../utils";
 import {
   canItBeSaved,
   initStrings,
-  isChoiceInitial,
   resetValues,
   returnStringWithFirstFloatingPoint,
   saveCoinValue,
