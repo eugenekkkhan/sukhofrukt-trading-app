@@ -78,6 +78,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
             <TextInput
               value={valuesOfInputs.fixOn25}
               maxLength={6}
+              style={{ width: "100px" }}
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
