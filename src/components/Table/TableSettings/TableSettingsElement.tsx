@@ -207,7 +207,7 @@ const TableSettingsElement = ({
                     />
                     <span className="checkmark"></span>
                   </label>
-                  <p className="checkbox-label-text">безубыток</p>
+                  <p className="checkbox-label-text">stop-loss</p>
                 </div>
               </div>
             ))}
