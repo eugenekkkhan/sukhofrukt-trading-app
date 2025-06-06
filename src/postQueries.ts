@@ -52,6 +52,10 @@ const updateCoinValue = async (
   symbol: string,
   coinId: number,
   id: number,
+  stopLossOn25: boolean,
+  stopLossOn50: boolean,
+  stopLossOn75: boolean,
+  stopLossOn100: boolean,
 ) => {
   const body = {
     amount: amount,
@@ -64,6 +68,10 @@ const updateCoinValue = async (
     id: coinId,
     uid: id,
     symbol: symbol,
+    stopLossOn25: stopLossOn25,
+    stopLossOn50: stopLossOn50,
+    stopLossOn75: stopLossOn75,
+    stopLossOn100: stopLossOn100,
   };
 
   return await axios.post(

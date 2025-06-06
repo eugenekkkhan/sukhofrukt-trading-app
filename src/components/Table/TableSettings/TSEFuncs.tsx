@@ -54,12 +54,23 @@ const saveCoinValue = (
   symbol: string,
   coinId: number,
   id?: string,
+  breakEvenValues?: boolean[],
 ) => {
   const valuesInt: TableSettingsElementProps["initValues"] = values.map(
     (values) => parseFloat(values),
   ) as TableSettingsElementProps["initValues"];
   if (id && parseInt(id)) {
-    return updateCoinValue(...valuesInt, amount, symbol, coinId, parseInt(id));
+    return updateCoinValue(
+      ...valuesInt,
+      amount,
+      symbol,
+      coinId,
+      parseInt(id),
+      breakEvenValues?.[0] ?? false,
+      breakEvenValues?.[1] ?? false,
+      breakEvenValues?.[2] ?? false,
+      breakEvenValues?.[3] ?? false,
+    );
   }
 };
 
@@ -72,6 +83,8 @@ type TableSettingsElementProps = {
   coinId: number;
   amount: number;
   delFunc: () => void;
+  breakEvenValues: boolean[];
+  setBreakEvenValues: React.Dispatch<React.SetStateAction<boolean[]>>;
 };
 
 export type { TableSettingsElementProps, initStrings };

@@ -16,6 +16,10 @@ type TSCFetchedDataType = {
   fixOn75: number;
   fixOn100: number;
   id: number;
+  stopLossOn25: boolean;
+  stopLossOn50: boolean;
+  stopLossOn75: boolean;
+  stopLossOn100: boolean;
 };
 
 const deleteElementFromTable = (
@@ -29,17 +33,30 @@ const deleteElementFromTable = (
 const TableSettingsComponent = () => {
   const [fetchedData, setFetchedData] = useState<TSCFetchedDataType[]>([]);
   const [isFetched, setIsFetched] = useState<boolean>(false);
+  const [breakEvenValuesArr, setBreakEvenValuesArr] = useState<boolean[][]>([]);
   const id = getCookie("id");
 
   useEffect(() => {
     if (id && !isFetched) {
       getAllCoinValues(id).then((res) => {
         setFetchedData(res.data);
-        console.log(res.data);
+        setBreakEvenValuesArr(
+          res.data.map((coin: TSCFetchedDataType & {
+            stopLossOn25: boolean;
+            stopLossOn50: boolean;
+            stopLossOn75: boolean;
+            stopLossOn100: boolean;
+          }) => [
+            coin.stopLossOn25,
+            coin.stopLossOn50,
+            coin.stopLossOn75,
+            coin.stopLossOn100,
+          ])
+        );
         setIsFetched(true);
       });
     }
-  });
+  }, [id, isFetched]);
 
   return (
     <>
@@ -69,6 +86,14 @@ const TableSettingsComponent = () => {
                 deleteElementFromTable(value, fetchedData, setFetchedData)
               }
               isLast={index === fetchedData.length - 1}
+              breakEvenValues={breakEvenValuesArr[index] || [false, false, false, false]}
+              setBreakEvenValues={newValues => {
+                setBreakEvenValuesArr(prev => {
+                  const updated = [...prev];
+                  updated[index] = newValues;
+                  return updated;
+                });
+              }}
             />
           ))
         ) : (

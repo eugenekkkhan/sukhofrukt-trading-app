@@ -12,11 +12,21 @@ import {
   resetValues,
   returnStringWithFirstFloatingPoint,
   saveCoinValue,
-  TableSettingsElementProps,
 } from "./TSEFuncs";
 import { removeCoinValue } from "../../../postQueries";
 import "./TableSettingsElement.css";
 //
+type TableSettingsElementProps = {
+  tradePair: string;
+  isLast: boolean;
+  initValues: [number, number, number, number, number];
+  coinId: number;
+  amount: number;
+  delFunc: () => void;
+  breakEvenValues: boolean[];
+  setBreakEvenValues: (values: boolean[]) => void;
+};
+
 const TableSettingsElement = ({
   tradePair,
   initValues,
@@ -24,6 +34,8 @@ const TableSettingsElement = ({
   coinId,
   amount,
   delFunc,
+  breakEvenValues,
+  setBreakEvenValues,
 }: TableSettingsElementProps) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const choices = new Array<
@@ -33,9 +45,6 @@ const TableSettingsElement = ({
     string[],
     React.Dispatch<React.SetStateAction<string>>[],
   ] = [[], []];
-
-  // Add state for checkboxes
-  const [breakEvenChecks, setBreakEvenChecks] = useState<boolean[]>([false, false, false, false]);
 
   for (let i = 0; i < 5; i++) {
     choices[i] = useState<string>(initValues[i].toString());
@@ -198,11 +207,11 @@ const TableSettingsElement = ({
                   <label className="custom-checkbox">
                     <input
                       type="checkbox"
-                      checked={breakEvenChecks[index]}
+                      checked={breakEvenValues[index]}
                       onChange={(e) => {
-                        const newChecks = [...breakEvenChecks];
+                        const newChecks = [...breakEvenValues];
                         newChecks[index] = e.target.checked;
-                        setBreakEvenChecks(newChecks);
+                        setBreakEvenValues(newChecks);
                       }}
                     />
                     <span className="checkmark"></span>
@@ -241,6 +250,7 @@ const TableSettingsElement = ({
                     tradePair,
                     coinId,
                     id ?? undefined,
+                    breakEvenValues,
                   )
                 }
               />
