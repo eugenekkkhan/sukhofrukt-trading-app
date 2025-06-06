@@ -84,8 +84,11 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                   ...valuesOfInputs,
                   fixOn25: returnStringWithFirstFloatingPoint(
                     e.target.value
+                      .replace(",", ".")
                       .split("")
-                      .filter((value) => "0123456789.".includes(value))
+                      .filter((char) => {
+                        return "0123456789.".includes(char) ? true : false;
+                      })
                       .join(""),
                   ),
                 })
@@ -112,10 +115,13 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
               onChange={(e) =>
                 setValuesOfInputs({
                   ...valuesOfInputs,
-                  fixOn50: returnStringWithFirstFloatingPoint(
+                  fixOn50:  returnStringWithFirstFloatingPoint(
                     e.target.value
+                      .replace(",", ".")
                       .split("")
-                      .filter((value) => "0123456789.".includes(value))
+                      .filter((char) => {
+                        return "0123456789.".includes(char) ? true : false;
+                      })
                       .join(""),
                   ),
                 })
@@ -144,8 +150,11 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                   ...valuesOfInputs,
                   fixOn75: returnStringWithFirstFloatingPoint(
                     e.target.value
+                      .replace(",", ".")
                       .split("")
-                      .filter((value) => "0123456789.".includes(value))
+                      .filter((char) => {
+                        return "0123456789.".includes(char) ? true : false;
+                      })
                       .join(""),
                   ),
                 })
@@ -174,8 +183,11 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                   ...valuesOfInputs,
                   fixOn100: returnStringWithFirstFloatingPoint(
                     e.target.value
+                      .replace(",", ".")
                       .split("")
-                      .filter((value) => "0123456789.".includes(value))
+                      .filter((char) => {
+                        return "0123456789.".includes(char) ? true : false;
+                      })
                       .join(""),
                   ),
                 })
