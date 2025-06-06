@@ -175,7 +175,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
               />
               <span className="checkmark"></span>
             </label>
-            <span className="checkbox-label-text">безубыток</span>
+            <p className="checkbox-label-text">stop-loss</p>
           </div>
           <p className="gray">Вводимое значение – дробное число от 0 до 1</p>
           <div className="flex-row gap">
