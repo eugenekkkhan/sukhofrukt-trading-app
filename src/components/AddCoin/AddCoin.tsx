@@ -30,7 +30,7 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
     return (
       Object.values(valuesOfInputs)
         .slice(2, 6) // Only get the fix values, excluding stopLoss booleans
-        .every((value) => !value || (typeof value === 'string' && parseFloat(value) < 1)) &&
+        .every((value) => !value || (typeof value === 'string' && parseFloat(value) <= 1)) &&
       valuesOfInputs.equity.length > 0 &&
       valuesOfInputs.name.length > 0
     );
