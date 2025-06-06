@@ -50,10 +50,10 @@
 .window {
   display: none;
   position: absolute;
-  width: calc(325px - 24px);
+  width: calc(375px - 24px);
   background-color: var(--primary);
   box-shadow: inset 0 0 0 1px var(--gray);
-  height: 200px;
+  height: 300px;
   border-radius: 18px;
   transition:
     color 300ms ease-out,
