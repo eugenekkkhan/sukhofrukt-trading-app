@@ -15,7 +15,6 @@ import {
   TableSettingsElementProps,
 } from "./TSEFuncs";
 import { removeCoinValue } from "../../../postQueries";
-import "./TableSettingsElement.css";
 //
 const TableSettingsElement = ({
   tradePair,
@@ -162,16 +161,26 @@ const TableSettingsElement = ({
           </div>
           <div
             className="fixes-group"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+              gap: "16px",
+              marginTop: "24px",
+              marginLeft: 0,
+              paddingLeft: 0,
+            }}
           >
             {valuesOfInputs.slice(1).map((value, index) => (
               <div
-                className="fixes-item"
+                className="fixes-item flex-column gap"
                 key={index}
+                style={{ flex: 1, minWidth: 0, alignItems: "center", display: "flex" }}
               >
-                <div className="fixes-label-input">
+                <div className="flex-row gap" style={{ width: "100%", justifyContent: "center" }}>
                   <p>Фикс. {(index + 1) * 25}%</p>
                   <TextInput
-                    className="fixes-input"
+                    style={{ width: "60px" }}
                     value={value}
                     id={""}
                     onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -195,7 +204,7 @@ const TableSettingsElement = ({
                     }
                   />
                 </div>
-                <div className="fixes-checkbox-row">
+                <div className="flex-row gap align-center" style={{ width: "100%", justifyContent: "center" }}>
                   <label className="custom-checkbox">
                     <input
                       type="checkbox"
