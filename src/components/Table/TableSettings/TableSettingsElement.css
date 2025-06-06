@@ -1,0 +1,134 @@
+/* Группа фиксированных процентов */
+.fixes-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+  margin-top: 24px;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.fixes-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.fixes-label-input {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixes-input {
+  width: 60px;
+  min-width: 0;
+}
+
+.fixes-checkbox-row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Кастомный чекбокс */
+.custom-checkbox {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 18px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.custom-checkbox:hover input ~ .checkmark {
+  border-color: #666;
+}
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Адаптивность */
+@media (max-width: 900px) {
+  .fixes-group {
+    gap: 8px;
+  }
+  .fixes-label-input {
+    gap: 4px;
+  }
+}
+@media (max-width: 700px) {
+  .fixes-group {
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+  }
+  .fixes-item {
+    align-items: flex-start;
+  }
+  .fixes-label-input, .fixes-checkbox-row {
+    justify-content: flex-start;
+  }
+  .fixes-input {
+    width: 100%;
+    max-width: 120px;
+  }
+}
+@media (max-width: 500px) {
+  .fixes-input {
+    max-width: 100px;
+    font-size: 15px;
+  }
+  .custom-checkbox {
+    font-size: 15px;
+  }
+  .checkmark {
+    height: 15px;
+    width: 15px;
+  }
+} 
