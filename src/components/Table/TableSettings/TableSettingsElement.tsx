@@ -221,9 +221,17 @@ const TableSettingsElement = ({
                       type="checkbox"
                       checked={breakEvenValues[index]}
                       onChange={(e) => {
-                        const newChecks = [...breakEvenValues];
-                        newChecks[index] = e.target.checked;
-                        setBreakEvenValues(newChecks);
+                        const checked = e.target.checked;
+                        setBreakEvenValues(prev => {
+                          const updated = [...prev];
+                          updated[index] = checked;
+                          if (checked) {
+                            for (let i = index + 1; i < updated.length; i++) {
+                              updated[i] = true;
+                            }
+                          }
+                          return updated;
+                        });
                       }}
                     />
                     <span className="checkmark"></span>

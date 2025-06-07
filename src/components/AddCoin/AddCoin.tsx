@@ -99,7 +99,17 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 <input
                   type="checkbox"
                   checked={valuesOfInputs.stopLossOn25}
-                  onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn25: e.target.checked }))}
+                  onChange={e => setValuesOfInputs(v => {
+                    const checked = e.target.checked;
+                    const updated = { ...v };
+                    updated.stopLossOn25 = checked;
+                    if (checked) {
+                      updated.stopLossOn50 = true;
+                      updated.stopLossOn75 = true;
+                      updated.stopLossOn100 = true;
+                    }
+                    return updated;
+                  })}
                 />
                 <span className="checkmark"></span>
               </label>
@@ -132,7 +142,16 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 <input
                   type="checkbox"
                   checked={valuesOfInputs.stopLossOn50}
-                  onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn50: e.target.checked }))}
+                  onChange={e => setValuesOfInputs(v => {
+                    const checked = e.target.checked;
+                    const updated = { ...v };
+                    updated.stopLossOn50 = checked;
+                    if (checked) {
+                      updated.stopLossOn75 = true;
+                      updated.stopLossOn100 = true;
+                    }
+                    return updated;
+                  })}
                 />
                 <span className="checkmark"></span>
               </label>
@@ -165,7 +184,15 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 <input
                   type="checkbox"
                   checked={valuesOfInputs.stopLossOn75}
-                  onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn75: e.target.checked }))}
+                  onChange={e => setValuesOfInputs(v => {
+                    const checked = e.target.checked;
+                    const updated = { ...v };
+                    updated.stopLossOn75 = checked;
+                    if (checked) {
+                      updated.stopLossOn100 = true;
+                    }
+                    return updated;
+                  })}
                 />
                 <span className="checkmark"></span>
               </label>
@@ -198,7 +225,12 @@ const AddCoin = ({ coinId, id }: { coinId: number; id: string }) => {
                 <input
                   type="checkbox"
                   checked={valuesOfInputs.stopLossOn100}
-                  onChange={e => setValuesOfInputs(v => ({ ...v, stopLossOn100: e.target.checked }))}
+                  onChange={e => setValuesOfInputs(v => {
+                    const checked = e.target.checked;
+                    const updated = { ...v };
+                    updated.stopLossOn100 = checked;
+                    return updated;
+                  })}
                 />
                 <span className="checkmark"></span>
               </label>
