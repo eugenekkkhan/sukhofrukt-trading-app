@@ -8,6 +8,7 @@ type TablePositionElementProps = {
   // currentPrice: number;
   // amountInDollars: number;
   tradePair: string;
+  side: string;
   unrealizedPL: number;
   currentAmountInDollars: number;
   delFunc: () => void;
@@ -26,6 +27,7 @@ const TablePositionElement = ({
   tradePair,
   currentAmountInDollars,
   unrealizedPL,
+  side,
   whenOpened,
   delFunc,
   percentage = (unrealizedPL / (currentAmountInDollars - unrealizedPL)) * 100,
@@ -49,7 +51,11 @@ const TablePositionElement = ({
           : "flex-row justify-between table-element-padding"
       }
     >
+      <div>
       <p>{tradePair}</p>
+      <p className={side === "long" ? "green" : side === "short" ? "red" : ""}>{side}</p>
+      </div>
+      
       <div className="flex-row table-element-gap">
         <div className="text-right text-small">
           <p>
