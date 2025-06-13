@@ -46,6 +46,7 @@ const TablePositionComponent = () => {
       {isFetched ? (
         fetchedData.map((value, index) => (
           <TablePositionElement
+            side={value.side}
             key={index}
             tradePair={value.symbol}
             currentAmountInDollars={value.usdtEquity}
