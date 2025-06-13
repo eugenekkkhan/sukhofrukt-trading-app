@@ -34,7 +34,7 @@ const TableHistoryElement = ({
           <p>
             {cost.toFixed(2)} $, {amount.toFixed(2)}{" "}
             {symbol.slice(0, symbol.length - 4)} (
-            {fix.toFixed(2).replace("-", "–")} %)
+            {fix.toFixed(0).replace("-", "–")} %)
           </p>
           <p>{timeOpened?.toLocaleString()}</p>
           <p
